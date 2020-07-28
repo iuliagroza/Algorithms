@@ -1,0 +1,70 @@
+PSEUDOCODE
+
+Divide_And_Conquer(array, start, finish)
+{
+  if basic_case(array, start, finish) 
+  {
+    return solution(array, start, finish)
+  }
+  else
+  {
+    middle -> divide(array, start, finish) // DIVIDE
+    S1 -> Divide_And_Conquer(array, start, mid) // CONQUER 1
+    S2 -> Divide_And_Conquer(array, mid+1, finish) // CONQUER 2
+    S -> S1 U S2 // MERGE
+    return S
+  }
+}
+
+
+SUM OF N ELEMENTS USING DAC
+C++
+
+#include <iostream>
+
+#define nMax 100001
+
+int DAC(int arr[], int start, int finish)
+{
+    if(start==finish)
+        return arr[start];
+    else
+    {
+        int mid = (start+finish)/2;
+        int sum1 = DAC(arr, start, mid);
+        int sum2 = DAC(arr, mid+1, finish);
+        return sum1+sum2;
+    }
+}
+
+int main()
+{
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
+    std::cout.tie(0);
+    int n, a[nMax];
+    std::cin >> n;
+    for(int i=1; i<=n; i++)
+        std::cin >> a[i];
+    int sum = DAC(a, 1, n);
+    std::cout << sum;
+    return 0;
+}
+
+
+Python
+
+def DAC(arr, start, finish):
+    if start == finish:
+        return arr[start]
+    else:
+        mid = int((start+finish)/2)
+        sum1 = DAC(arr, start, mid)
+        sum2 = DAC(arr, mid+1, finish)
+        return sum1+sum2
+
+a = [2, 56, 45, 13, 9, 0]
+n = len(a)-1
+
+sum = DAC(a, 0, n)
+print(sum)
