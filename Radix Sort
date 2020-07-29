@@ -4,7 +4,7 @@ Radix_Sort(arr, d)
 {
   for j=1, j<d, j=j+1
   {
-    Integer count[10]={0};
+    Integer count[10]={0}
     for i=0, i<n, i=i+1
     {
       count[key of(arr[i]) in pass j] -> count[key of(arr[i]) in pass j]+1
