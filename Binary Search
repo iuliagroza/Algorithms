@@ -1,0 +1,94 @@
+Time complexity: O(log n)
+
+PSEUDOCODE
+
+Binary_Search(arr, elem, left, right)
+{
+  if right >= left
+  {
+    middle -> (left+right)/2
+    if arr[middle] == elem
+    {
+      return middle
+    }
+    else if arr[middle] > elem
+    {
+      return Binary_Search(arr, elem, left, middle)
+    }
+    else
+    {
+      return Binary_Search(arr, elem, middle+1, right)
+    }
+  }
+  else
+  {
+    return -1
+  }
+}
+
+
+C++
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
+    std::cout.tie(0);
+    std::vector<int> v;
+    int n;
+    std::cin >> n;
+    for(int i=0; i<n; i++)
+    {
+        int x;
+        std::cin >> x;
+        v.push_back(x);
+    }
+    int value = 16;
+
+    std::sort(v.begin(), v.end()); ///Our array must be sorted
+
+    std::vector<int>::iterator low_it;
+    low_it = std::lower_bound(v.begin(), v.end(), value); /// Returns the smallest element bigger or equal to our value
+    std::cout << low_it-v.begin() << '\n';
+
+    std::vector<int>::iterator up_it;
+    up_it = std::upper_bound(v.begin(), v.end(), value); /// Returns the biggest element smaller or equal to our value
+    std::cout << up_it-v.begin() << '\n';
+
+    bool found = 0;
+    found = std::binary_search(v.begin(), v.end(), value); /// Binary Search STL function - it returns a bool if a value is found or not
+    std::cout << found << '\n';
+
+    return 0;
+}
+
+
+Python
+
+def Binary_Search(arr, elem, left, right):
+    if right > left:
+        middle = (left+right)//2
+        if arr[middle] == elem:
+            return middle
+        elif arr[middle] > elem:
+            return Binary_Search(arr, elem, left, middle)  # Search in the left half
+        else:
+            return Binary_Search(arr, elem, middle+1, right)  # Search in the right half
+    else:
+        return -1  # Element not found
+
+
+a = [2, 56, 45, 13, 9, 0]
+n = len(a)
+value1 = 13  # Existent value
+value2 = 299 # Inexistent value
+
+index1 = Binary_Search(a, value1, 0, n)
+print(index1)
+
+index2 = Binary_Search(a, value2, 0, n)
+print(index2)
