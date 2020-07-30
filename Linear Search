@@ -1,0 +1,64 @@
+PSEUDOCODE
+
+Integer element
+for i=0, i<n, i=i+1
+{
+  if element == arr[i]
+  {
+    output: "The value {element} is found on the {i} index."
+  }
+}
+
+
+C++
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int Linear_Search(std::vector<int> v, int element)
+{
+    for(int i=0; i<v.size(); i++)
+        if(v[i]==element)
+            return i;  /// We return the position of the element equal to our searched value
+    return -1; /// If not found, -1 is returned
+}
+
+int main()
+{
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
+    std::cout.tie(0);
+    std::vector<int> v;
+    int n;
+    std::cin >> n;
+    for(int i=0; i<n; i++)
+    {
+        int x;
+        std::cin >> x;
+        v.push_back(x);
+    }
+    int search_element = 16; /// Random value to search
+    int index = Linear_Search(v, search_element);
+    std::cout << index;
+    return 0;
+}
+
+
+Python
+
+def Linear_Search(arr, elem):
+    for i in range(len(arr)):
+        if arr[i] == elem:
+            return i
+    return -1
+
+a = [2, 56, 45, 13, 9, 0]
+value1 = 13  
+value2 = 299
+
+index1 = Linear_Search(a, value1)  # Searching an existent value in the list
+print(index1) 
+
+index2 = Linear_Search(a, value2)  # Searching an inexistent value in the list
+print(index2)
