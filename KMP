@@ -1,0 +1,118 @@
+Time complexity: O(n), where n is the length of the text
+Additional Space: O(m), where m is the length of the pattern
+
+PSEUDOCODE
+
+KMP(text, pattern)
+{
+  Array of Integer skip[MAX_DIM]
+  for i=1, i<n, i=i+1
+  {
+    while j>0 and pattern[i]!=pattern[j]
+    {
+      j -> skip[j-1]
+    }
+    if pattern[i]!=pattern[j]
+    {
+      j -> j+1
+    }
+    skip[i] -> j;
+  }
+  j -> 0
+  for i=0, i<m, i=i+1
+  {
+    while j>0 and text[i]!=pattern[j]
+    {
+      j -> skip[j-1]
+    }
+    if text[i]==pattern[j]
+    {
+      j -> j+1
+    }
+    if j==n
+    {
+      add to solution i-n+1
+    }
+  }
+  Output solution
+}
+
+
+C++ 
+
+/// For simplicity, the text is just a word (n<=50.000)
+#include <iostream>
+#include <cstring>
+#include <vector>
+
+#define nMax 500005
+
+void KMP(std::string text, std::string pattern)
+{
+    int n=pattern.size(), m=text.size(), j=0, nxt[nMax]={0};
+    nxt[0]=0;
+    /// Precalculate the numbers of letters we can skip for every prefix
+    for(int i=1; i<n; i++)
+    {
+        while(j>0 && pattern[i]!=pattern[j])
+            j=nxt[j-1];
+        if(pattern[i]==pattern[j])
+            j++;
+        nxt[i]=j;
+    }
+    j=0;
+    std::vector<int> ocr;
+    /// Sliding the window (just like in the naive solution) using nxt[] in order to find the pattern's occurences
+    for(int i=0; i<m; i++)
+    {
+        while(j>0 && text[i]!=pattern[j])  /// If the characters do not match, skip to the next index
+            j=nxt[j-1];
+        if(text[i]==pattern[j])  /// The characters match
+            j++;
+        if(j==n)
+            ocr.push_back(i-n+1); /// We found an occurrence
+    }
+    for(auto i : ocr)
+        std::cout << i << ' ';
+}
+
+int main()
+{
+    std::string pattern, text;
+    std::cin >> pattern >> text;
+    KMP(text, pattern);
+    return 0;
+}
+
+
+Python
+
+def KMP(text, pattern):
+    n = len(pattern)
+    m = len(text)
+    j = 0
+    nxt = {}  # Storing the precalculated number of letters to skip in a dictionary
+    nxt[0] = 0
+    for i in range(1, n):
+        while j>0 and pattern[i]!=pattern[j]:  # If we find the suffix matching the prefix
+            j = nxt[j-1]
+        if pattern[i] == pattern[j]:  # Skip the letter if it is the same
+            j += 1
+        nxt[i] = j
+    j = 0
+    ocr = []
+    # Slide the window to find the occurrences
+    for i in range(m):
+        while j>0 and text[i]!=pattern[j]:
+            j = nxt[j-1]
+        if text[i] == pattern[j]:
+            j += 1
+        if j == n:
+            ocr.append(i - n + 1);
+            j = nxt[n-1]
+    print(ocr)
+
+pattern = "ABA"
+text = "CABBCABABAB"
+
+KMP(text, pattern)
