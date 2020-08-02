@@ -12,7 +12,7 @@ Sieve_Of_Eratosthenes(n)
     {
       for i=d*d, i<=n, i=i+d
       {
-        sieve[i]=1
+        sieve[i] <- 1
       }
     }
   }
