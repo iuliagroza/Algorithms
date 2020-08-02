@@ -6,7 +6,7 @@ Binary_Search(arr, elem, left, right)
 {
   if right >= left
   {
-    middle -> (left+right)/2
+    middle <- (left+right)/2
     if arr[middle] == elem
     {
       return middle
