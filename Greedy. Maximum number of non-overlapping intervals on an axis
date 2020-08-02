@@ -40,7 +40,6 @@ Additional Space: O(n)
 C++
 
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 #define nMax 1001
