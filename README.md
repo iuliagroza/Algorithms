@@ -12,7 +12,8 @@ This is a continuously updating list of some of the most essential algorithms im
 8. Binary Search
 9. Sieve of Erathostenes
 10. Knuth-Morris-Pratt Algorithm (KMP)
-11. Greedy
+11. Greedy. Maximum number of non-overlapping intervals on an axis
 12. Fractional Knapsack Problem
+13. Dynamic Programming. 0-1 Knapsack Problem
 
 ##### © Iulia Groza
