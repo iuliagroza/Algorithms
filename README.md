@@ -15,5 +15,6 @@ This is a continuously updating list of some of the most essential algorithms im
 11. Greedy. Maximum number of non-overlapping intervals on an axis
 12. Fractional Knapsack Problem
 13. Dynamic Programming. 0-1 Knapsack Problem
+14. Longest Common Subsequence
 
 ##### © Iulia Groza
