@@ -1,0 +1,142 @@
+Time Complexity: O(n*log n) (efficient)
+Additional Space: O(n)
+
+PSEUDOCODE
+
+(Recurrence relation for the length array)
+      | 1,                                              if A[i]>A[j], j = i+1, i+2, ..., n
+L[i] =| 1 + max(A[j], j=i+1, i+2, ..., n, A[j]>=A[i]),  otherwise  
+
+(To find a subsequence of maximal length we use an ind[] array that stores the index of each maximum value)
+
+
+/// The following sources solve the Longest STRICTLY Increasing Subsequence problem
+C++
+
+#include <iostream>
+
+#define nMax 100005
+
+void output(int k, int ind[], int A[])  /// Function used to output the subsequence in increasing order (because it is built from the end)
+{
+    if(k>0)
+    {
+        output(ind[k], ind, A);
+        std::cout << A[k] << " ";
+    }
+}
+
+int src(int x, int k, int A[], int last_pos[])  /// Binary search function that searches for the maximum element after our current element that is bigger than it
+{
+    int sol=0, left=1, right=k;
+    while(left <= right)
+    {
+        int mid = (left+right)>>1;
+        if(x > A[last_pos[mid]])
+        {
+            left = mid+1;
+            sol = std::max(sol, mid);
+        }
+        else
+            right = mid-1;
+    }
+    return sol;
+}
+
+int main()
+{
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
+    std::cout.tie(0);
+    int n;
+    std::cin >> n;
+
+    int A[nMax];
+    for(int i=1; i<=n; i++)
+        std::cin >> A[i];
+
+    int last_pos[nMax]={0}, best[nMax]={0};  /// last_pos[] helps us link the elements of the subsequence between them, best[] stores the maximum current length.
+    last_pos[0]=0, last_pos[1]=1, best[1]=1;
+
+    int k=1, ind[nMax]={0};
+    for(int i=2; i<=n; i++)  /// Solve the problem using the recurrence relation
+    {
+        int pos = src(A[i], k, A, last_pos);
+        ind[i] = last_pos[pos];
+        best[i] = pos+1;
+        last_pos[pos+1] = i;
+        k = std::max(k, best[i]);
+    }
+
+    int lst, Max=0;
+    for(int i=1; i<=n; i++)  /// Find the maximum length
+        if(best[i]>Max)
+    {
+        Max = best[i];
+        lst = i;
+    }
+
+    std::cout << Max << '\n';
+    output(lst, ind, A);  
+    return 0;
+}
+
+
+Python
+
+def output(k, ind, A, sol):  # Function that builds the solution array recursively from end to beginning
+    if(k>0):
+        output(ind[k], ind, A, sol)
+        sol.append(A[k])
+
+def src(x, k, A, last_pos):  # Binary Search function that searches for the maximum value element after our current element, bigger than it 
+    sol=0
+    left=1
+    right=k
+    while left <= right:
+        mid = (left+right)//2
+        if x > A[last_pos[mid]]:
+            left = mid+1
+            sol = max(sol, mid)
+        else:
+            right = mid-1
+    return sol
+
+n = 5
+A = [24, 12, 15, 15, 19]
+for i in range(5):
+    A.append(0)
+
+last_pos = []
+for i in range(n+2):
+    last_pos.append(0)
+last_pos[1] = 1
+
+best = []
+for i in range(n+2):
+    best.append(0)
+best[1] = 1
+
+ind = []
+for i in range(n+2):
+    ind.append(0)
+
+k=1
+for i in range(2, n+1):  # Rrecurrence Implementation
+    pos = src(A[i], k, A, last_pos)
+    ind[i] = last_pos[pos]
+    best[i] = pos+1
+    last_pos[pos+1] = i
+    k = max(k, best[i])
+
+lst=0
+Max=0
+for i in range(1, n+1):  # Finding the maximum length
+    if best[i]>Max:
+        Max = best[i]
+        lst = i
+
+print(Max)  # Printing the solution
+sol = []
+output(lst, ind, A, sol)
+print(sol)
