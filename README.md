@@ -20,5 +20,6 @@ This is a continuously updating list of some of the most essential algorithms im
 16. Convex Hull
 17. Breadth-First Search (BFS)
 18. Depth-First Search (DFS)
+19. Floyd-Warshall / Roy-Floyd
 
 ##### © Iulia Groza
