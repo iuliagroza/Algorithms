@@ -19,5 +19,6 @@ This is a continuously updating list of some of the most essential algorithms im
 15. Longest Increasing Subsequence
 16. Convex Hull
 17. Breadth-First Search (BFS)
+18. Depth-First Search (DFS)
 
 ##### © Iulia Groza
