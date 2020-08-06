@@ -18,5 +18,6 @@ This is a continuously updating list of some of the most essential algorithms im
 14. Longest Common Subsequence
 15. Longest Increasing Subsequence
 16. Convex Hull
+17. Breadth-First Search
 
 ##### © Iulia Groza
