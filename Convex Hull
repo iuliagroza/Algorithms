@@ -1,0 +1,89 @@
+Time complexity: O(n*log n)
+Space Complexity: O(n)
+
+PSEUDOCODE
+
+Convex_Hull(arr[], n)
+{
+  Sort(arr[])
+  Reverse_Copy(arr, arr[0:n-1])  (Copy the first n-1 elements to a[], in descending order)
+  Integer hull[]
+  for i=0, i<2*n-1, i=i+1
+  {
+    H <- hull.length
+    while H>1 and slope(hull[H-1], hull[H-2], arr[i])
+    {
+      H <- H-1
+    }
+    hull[H]=arr[i]
+    H <- H+1
+  }
+  hull.remove_last_element
+  Output hull
+}
+
+
+C++
+
+#include <iostream>
+#include <algorithm>
+#include <iomanip>
+
+#define nMax 250005
+#define p std::pair<double, double>
+#define x first
+#define y second
+
+p a[nMax], h[nMax];
+
+bool slope(p a, p b, p c)  /// Check if the angle between [a[i], h[j-1]] and [h[j-1], h[j-2]] is less than 180 degrees
+{
+	return (a.x-c.x)*(b.y-c.y)-(a.y-c.y)*(b.x-c.x)<0;
+}
+
+int main()
+{
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
+    std::cout.tie(0);
+    int n;
+    std::cin >> n;
+    for(int i=0; i<n; i++)
+        std::cin >> a[i].x >> a[i].y;  /// a[] is an array of pairs of double values
+
+    std::sort(a, a+n);  /// Sort a[] in ascending order, by x, then by y
+    std::reverse_copy(a, a+n-1, a+n);  ///Append the first n-1 elements in descending order to a[]  
+
+    int j=0;
+    for(int i=0; i<2*n-1; h[j++]=a[i++])  /// Build the convex hull
+        while(j>1 && slope(h[j-2], h[j-1], a[i]))  
+            j--;
+
+    std::cout << --j << '\n';
+    for(int i=0; i<j; i++)
+        std::cout << std::fixed << std::setprecision(9) << h[i].x << ' ' << h[i].y << '\n';  /// Output with 9 decimals precision
+    return 0;
+}
+
+
+Python
+
+n = 8
+points = [[2.0, 0.0], [0.0, 2.0], [1.0, 3.0], [0.0, 4.0], [3.0, 3.0], [2.0, 6.0], [4.0, 2.0], [4.0, 4.0]]
+
+points = sorted(points)
+for i in range(n-2, -1, -1):
+    points.append(points[i])
+
+def slope(a, b, c):  # Function that checks if the current point can be added into the convex hull
+    return (a[0]-b[0])*(b[1]-c[1])-(b[0]-c[0])*(a[1]-c[1]) < 0  
+
+hull = []
+
+for i in range(2*n-1):  # Build the convex hull
+    while len(hull)>1 and slope(hull[-2], hull[-1], points[i]):
+        hull.pop()
+    hull.append(points[i])
+hull.pop()  # Remove the last element, because it coincides with the first
+
+print(hull)
