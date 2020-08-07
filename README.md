@@ -22,5 +22,8 @@ This is a continuously updating list of some of the most essential algorithms im
 18. Depth-First Search (DFS)
 19. Floyd-Warshall / Roy-Floyd
 20. Dijkstra - Python Implementation by @MahmoudFettal
+21. Bellman-Ford
+22. Kruskal
+23. Topological Sorting
 
 ##### © Iulia Groza
