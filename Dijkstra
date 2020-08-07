@@ -1,0 +1,106 @@
+Time Complexity: O(|E|*log |V|), where |V| is the number of vertices and |E| the number of edges
+Additional Space: O(|V|)
+
+PSEUDOCODE
+
+Dijkstra(n, m, G)
+{
+  Priority_Queue of Pairs Q;  (Create a priority queue of pairs that sorts its element based on the distance of the edge) 
+  Q.add((0, start_node))  (Push the source node)
+  Integer dist[]
+  for i=2, i<=n, i=i+1
+  {
+    dist[i] <- -INF  (Initialize the distance array with the smallest integer)
+    Q.add((d[i], i))  (Add them in the queue too)
+  }
+  Bool vis[]
+  while Q.length != 0  
+  {
+    if vis[Q.top.second] == False  (If the element with the biggest priority has not been visited yet)
+    {
+            x <- Q.top.second;
+            for i=1, i<=G[x].length, i=i+1
+            {
+                if -G[x][i].second+dist[x]>dist[G[x][i].first] ("Relax" the edge; found an intermediate node that minimizes the distance)
+                {
+                    Q.add((-G[x][i].second+d[x], G[x][i].first))
+                    dist[G[x][i].first] <- -G[x][i].second+dist[x]
+                }
+            }
+            vis[x] <- True; 
+    }
+    else
+    {
+      Q.pop
+    }
+  }
+  Output dist[]
+}
+            
+
+C++
+/// We consider the first node to be the source and calculate the distance to 2, 3, ..., n
+
+#include <iostream>
+#include <vector>
+#include <bitset>
+#include <queue>
+
+#define nMax 50005
+
+int main()
+{
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
+    std::cout.tie(0);
+    int n, m;
+    std::cin >> n >> m;
+
+    std::vector<std::pair<int, int>> G[nMax];  /// List of adjacency
+    while(m--)
+    {
+        int x, y, dist;
+        std::cin >> x >> y >> dist;
+        G[x].push_back({y, dist});
+    }
+
+    std::priority_queue<std::pair<int, int>> Q;  /// First parameter of each pair is the 1-i distance in order to establish the priority by it
+    Q.push({0, 1});
+
+    int d[nMax]={0};
+    const int INF=1e9;
+    for(int i=2; i<=n; i++)
+    {
+        d[i]=-1e9;
+        Q.push({d[i], i});
+    }
+
+    std::bitset<nMax> vis;
+    while(!Q.empty())
+    {
+        if(!vis[Q.top().second])
+        {
+            int x = Q.top().second;
+            for(auto i:G[x])
+                if(-i.second+d[x]>d[i.first])  /// Found x as an intermediate node that improves the distance between 1 and i
+                {
+                    Q.push({-i.second+d[x], i.first});
+                    d[i.first] = -i.second+d[x];
+                }
+            vis[x]=1;
+        }
+        else
+            Q.pop();
+    }
+
+    for(int i=2; i<=n; i++)
+        if(d[i]!=-INF)
+            std::cout << -d[i] << " ";
+        else  /// There is no access to this node
+            std::cout << "0 ";
+    return 0;
+}
+
+
+Python
+
