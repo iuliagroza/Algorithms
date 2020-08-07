@@ -21,5 +21,6 @@ This is a continuously updating list of some of the most essential algorithms im
 17. Breadth-First Search (BFS)
 18. Depth-First Search (DFS)
 19. Floyd-Warshall / Roy-Floyd
+20. Dijkstra - Python Implementation by @MahmoudFettal
 
 ##### © Iulia Groza
