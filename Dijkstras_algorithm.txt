@@ -12,12 +12,14 @@ for i in edges:
     graph[i[0]][i[1]] = i[2]
     
 # some functions to make the code easier to read 
+# possible_paths gives the possible nodes you can pass from that aren't checked already 
 def possible_paths(checked,related):
     result = []
     for i in related:
         if not(i in checked):
             result.append(i)
     return result
+# short_roads gives the node with the smaller wait that isn't checked 
 def short_road(table,checked):
     for i in table: 
         if not (i[0] in checked):
@@ -31,25 +33,28 @@ def short_road(table,checked):
 # now we create the dijkstra's algorithm
 def dijkstras(graph,start,end):
     checked = []
+    # the table will contain the shortest road to each node 
     table   = [[start,0,'']]
     for i in range(2,n+1):
         table.append([i,infinty,''])
     while len(checked) < n:
-        key   = short_road(table,checked)
-        nodes = graph[key].keys()
-        checked.append(key)
+        key   = short_road(table,checked) 
+        nodes = graph[key].keys() #the nodes form the node key
+        checked.append(key) 
         nodes = possible_paths(checked,list(nodes))
         for i in nodes:
             if table[i-1][1] > table[key-1][1] + graph[key][i]:
                 table[i-1][1] = table[key-1][1] + graph[key][i]
                 table[i-1][2] = key
+    # the shortcut will cross backward the table to find the smaller path 
     shortcut = [end]
+    print(table)
     while True:
         shortcut.append(table[shortcut[-1]-1][2])
         if shortcut[-1] == start:
             break
     shortcut.reverse()
-    print(shortcut)
+    return shortcut
 
 
-dijkstras(graph,1,6)
+print(dijkstras(graph,1,6))
