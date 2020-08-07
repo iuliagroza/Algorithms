@@ -39,7 +39,7 @@ Dijkstra(n, m, G)
             
 
 C++
-/// We consider the first node to be the source and calculate the distance to 2, 3, ..., n
+/// We consider the first node to be the source and calculate the distance to 2, 3, ..., n in a directed graph
 
 #include <iostream>
 #include <vector>
