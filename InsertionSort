@@ -1,0 +1,48 @@
+// INSERTION SORT
+// => TIME-COMPLEXITY = O(N2)
+// => SPACE-COMPLEXITY = O(1)
+
+public class InsertionSort {
+    public static void main(String[] args) {
+        int arr[] = {9,6,11,2,1};
+        insertionSort(arr);
+        print(arr);
+    }
+
+    public static void insertionSort(int[] arr) {
+        int n = arr.length;
+        for(int i=1;i<n;i++)
+        {
+            // storing value in a variable "val"
+            int val = arr[i];
+            // starting pointer from a previous value
+            int j = i-1;
+
+            // checking and swapping till our stored value in (val) is lesser than the pointer val
+            while (j >= 0 && arr[j] > val)
+            {
+                //shifting val ahead
+                arr[j+1] = arr[j];
+                j = j - 1;
+            }
+            // j+1 is used as our pointer will a step backward due to while loop
+            arr[j+1] = val;
+        }
+    }
+
+
+    // print array
+    public static void print(int[] arr) {
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+ " ");
+        }
+    }
+
+// CODE CONTRIBURED BY @abbeyme
+}
+// 9 6 11 2 1
+// 6 9 11 2 1
+// 6 9 11 2 1
+// 2 6 9 11 1
+// 1 2 6 9  11
