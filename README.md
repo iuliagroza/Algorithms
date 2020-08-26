@@ -1,29 +1,36 @@
 # Algorithms
-This is a continuously updating list of some of the most essential algorithms implemented in pseudocode, C++ and Python.
+This is a continuously updating list of some of the most essential algorithms implemented in pseudocode, C++, Python and Java.
 
 ### Index:
 1. Divide and conquer
 2. Bubble Sort
-3. Counting Sort
-4. Merge Sort
-5. Quick Sort
-6. Radix Sort
-7. Linear Search
-8. Binary Search
-9. Sieve of Erathostenes
-10. Knuth-Morris-Pratt Algorithm (KMP)
-11. Greedy. Maximum number of non-overlapping intervals on an axis
-12. Fractional Knapsack Problem
-13. Dynamic Programming. 0-1 Knapsack Problem
-14. Longest Common Subsequence
-15. Longest Increasing Subsequence
-16. Convex Hull
-17. Breadth-First Search (BFS)
-18. Depth-First Search (DFS)
-19. Floyd-Warshall / Roy-Floyd
-20. Dijkstra - Python Implementation by @MahmoudFettal
-21. Bellman-Ford - Python Implementation by @MahmoudFettal
-22. Kruskal - Python Implementation by @MahmoudFettal
-23. Topological Sorting - Python Implementation by @MahmoudFettal
+3. Insertion Sort
+4. Counting Sort
+5. Merge Sort
+6. Quick Sort
+7. Radix Sort
+8. Linear Search
+9. Binary Search
+10. Sieve of Erathostenes
+11. Knuth-Morris-Pratt Algorithm (KMP)
+12. Greedy. Maximum number of non-overlapping intervals on an axis
+13. Fractional Knapsack Problem
+14. Dynamic Programming. 0-1 Knapsack Problem
+15. Longest Common Subsequence
+16. Longest Increasing Subsequence
+17. Convex Hull
+18. Breadth-First Search (BFS)
+19. Depth-First Search (DFS)
+20. Floyd-Warshall / Roy-Floyd
+21. Dijkstra 
+22. Bellman-Ford 
+23. Kruskal 
+24. Topological Sorting 
+
+Pseudocode Implementation: @LiaGroza
+C++ Implementation: @LiaGroza
+Python Implementation: 1-2, 4-20 - @LiaGroza
+                       21-24 - @MahmoudFettal
+Java Implementation: @Abbeyme1
 
 ##### © Iulia Groza
