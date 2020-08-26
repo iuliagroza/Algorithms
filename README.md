@@ -27,10 +27,10 @@ This is a continuously updating list of some of the most essential algorithms im
 23. Kruskal 
 24. Topological Sorting 
 
-Pseudocode Implementation: @LiaGroza
-C++ Implementation: @LiaGroza
-Python Implementation: 1-2, 4-20 - @LiaGroza
-                       21-24 - @MahmoudFettal
-Java Implementation: @Abbeyme1
+Pseudocode Implementation: @LiaGroza <br>
+C++ Implementation: @LiaGroza <br>
+Python Implementation: 1-2, 4-20 - @LiaGroza <br>
+                       21-24 - @MahmoudFettal <br>
+Java Implementation: @Abbeyme1 <br>
 
 ##### © Iulia Groza
