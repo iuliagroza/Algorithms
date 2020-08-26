@@ -1,0 +1,106 @@
+Time Complexity: O(n^2)
+Space Complexity: O(1)
+
+PSEUDOCODE
+
+Insertion_Sort(arr, n) 
+{
+  (We consider the array to be 1-indexed)
+  for i=2, i<=n, i=i+1
+  {
+    key <- a[i]
+    j <- i-1      
+    while j>0 and a[j]>key
+    {          
+      a[j+1] <- a[j]
+      j <- j-1
+    }
+    a[j+1] <- key
+  }
+}
+
+
+C++
+
+#include <iostream>
+#define nMax 1005
+
+int main()
+{
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
+    std::cout.tie(0);
+
+    /// Input
+    int n;
+    std::cin >> n;
+
+    int a[nMax];
+    for(int i=1; i<=n; i++)
+        std::cin >> a[i];
+
+    /// Searching for elements that are smaller than their predecessor
+    for(int i=2; i<=n; i++)
+    {
+        int key = a[i], j = i-1;
+
+        /// Moving the found element on the right position
+        while(j>0 && a[j]>key)
+            a[j+1] = a[j--];
+
+        a[j+1] = key;
+    }
+
+    /// Output
+    for(int i=1; i<=n; i++)
+        std::cout << a[i] << ' ';
+}
+
+
+Java
+
+public class InsertionSort {
+    public static void main(String[] args) {
+        int arr[] = {9, 6, 11, 2, 1};
+        insertionSort(arr);
+        print(arr);
+    }
+
+    public static void insertionSort(int[] arr) {
+        int n = arr.length;
+        for(int i=1; i<n; i++)
+        {
+            // Storing value in a variable "val"
+            int val = arr[i];
+            // Starting pointer from a previous value
+            int j = i-1;
+
+            // Checking and swapping till our stored value in (val) is lesser than the pointer val
+            while (j >= 0 && arr[j] > val)
+            {
+                // Shifting val ahead
+                arr[j+1] = arr[j];
+                j = j - 1;
+            }
+            // j+1 is used as our pointer will step backward due to while loop
+            arr[j+1] = val;
+        }
+    }
+
+
+    // print array
+    public static void print(int[] arr) {
+        for(int i=0; i<arr.length; i++)
+        {
+            System.out.print(arr[i]+ " ");
+        }
+    }
+
+// CODE CONTRIBUTED BY @abbeyme
+}
+
+// 9 6 11 2 1
+// 6 9 11 2 1
+// 6 9 11 2 1
+// 2 6 9 11 1
+// 1 2 6 9  11
