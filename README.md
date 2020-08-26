@@ -30,7 +30,7 @@ This is a continuously updating list of some of the most essential algorithms im
 Pseudocode Implementation: @LiaGroza <br>
 C++ Implementation: @LiaGroza <br>
 Python Implementation: 1-2, 4-20 - @LiaGroza <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21-24 - @MahmoudFettal <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21-24 - @MahmoudFettal <br>
 Java Implementation: @Abbeyme1 <br>
 
 ##### © Iulia Groza
