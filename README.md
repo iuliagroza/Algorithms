@@ -1,7 +1,7 @@
 # Algorithms
 This is a continuously updating list of some of the most essential algorithms implemented in pseudocode, C++, Python and Java.
 
-### Index:
+### Contents
 1. Divide and conquer
 2. Bubble Sort
 3. Insertion Sort
