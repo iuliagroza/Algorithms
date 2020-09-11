@@ -1,5 +1,6 @@
 Time Complexity: O(nlogn)
-Space Complexity: O(1) (Arrange the array into a heap, in place.)
+Space Complexity: O(1) // Arrange the array into a heap, in place.
+
 
 PSUEDOCODE
 
@@ -57,7 +58,9 @@ function right(i)
   return (2 * i + 2)
 }
 
+
 C++
+
 // Using vectors to represent an array.
 #include <iostream>
 #include <vector>
