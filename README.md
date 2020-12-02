@@ -1,5 +1,5 @@
 # Algorithms
-This is a continuously updating list of some of the most essential algorithms implemented in pseudocode, C++, Python and Java.
+This is a continuously updating list of some of the most essential algorithms implemented in pseudocode, C++14, Python 3.6 and Java.
 
 ### Contents
 1. Divide and conquer
