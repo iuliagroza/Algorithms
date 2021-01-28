@@ -1,3 +1,6 @@
+Time Complexity: O(n*log2(n))
+Space Complexity: O(n) (no additional space)
+
 PSEUDOCODE
 
 Quick_Sort(arr[], start, finish)
