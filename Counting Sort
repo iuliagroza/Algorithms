@@ -1,3 +1,6 @@
+Time Complexity: O(Max-Min), where Max and Min are the maximum, respectively the minimum value of the array
+Additional Space: O(Max)
+
 PSEUDOCODE
 
 Counting_Sort(arr, n)
