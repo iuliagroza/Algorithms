@@ -2,7 +2,7 @@ Time Complexity: O(nlogn)
 Space Complexity: O(1) // Arrange the array into a heap, in place.
 
 
-PSUEDOCODE
+PSEUDOCODE
 
 function heapSort(arr)
 {
