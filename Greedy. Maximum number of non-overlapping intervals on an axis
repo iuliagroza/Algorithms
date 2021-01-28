@@ -1,3 +1,6 @@
+Time Complexity: O(n*log n) (sorting)
+Additional Space: O(n)
+
 PSEUDOCODE
 
 Greedy(C)  (C is the candidate set)
@@ -34,8 +37,6 @@ ex. IN:
         5
 We can choose [3, 6], [6, 9], [10, 11], [11, 14] and [14, 17].
 
-Time Complexity: O(n*log n) (sorting)
-Additional Space: O(n)
 
 C++
 
