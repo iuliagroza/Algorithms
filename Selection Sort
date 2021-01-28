@@ -1,10 +1,7 @@
+Time Complexity: O(n^2)
+Additional Space: O(1)
 
-// SELECTION SORT
-
-// --> TIME COMPLEXITY = O(n2)
-// --> SPACE COMPLEXITY = O(1)
-
-// IN SELECTION SORT WE FIND MIN VAL IN ENTIRE ARRAY AND SWAP IT WITH CURRENT POINTER.
+JAVA
 
 public class SelectionSort  {
 
