@@ -8,7 +8,7 @@ PSEUDOCODE
 DFS(node)
 {
     vis[node] <- 1
-    for i=1, i<=G[node].length, i=i+1
+    for i=1, i<=G[node].length, i<-i+1
     {
         if vis[G[node][i]] == False
         {
