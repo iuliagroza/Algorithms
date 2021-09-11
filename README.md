@@ -1,8 +1,8 @@
 # Algorithms
 This is a continuously updating list of some of the most essential algorithms implemented in pseudocode, C++14, Python 3.6 and Java. You can find a comprehensive explanation of some of the algorithms present in this repo here: <br>
-..* https://dev.to/iuliagroza/complete-introduction-to-the-30-most-essential-data-structures-algorithms-43kd
-..* https://medium.com/marketing-and-entrepreneurship/complete-introduction-to-the-30-most-essential-data-structures-algorithms-5f8090773d21
-..* https://twitter.com/gg_iulia
+* https://dev.to/iuliagroza/complete-introduction-to-the-30-most-essential-data-structures-algorithms-43kd
+* https://medium.com/marketing-and-entrepreneurship/complete-introduction-to-the-30-most-essential-data-structures-algorithms-5f8090773d21
+* https://twitter.com/gg_iulia
 
 ### Contents
 1. Divide and conquer
