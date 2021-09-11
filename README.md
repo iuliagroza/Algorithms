@@ -31,7 +31,7 @@ This is a continuously updating list of some of the most essential algorithms im
 
 Pseudocode Implementation: 1-7, 9-25 - @iuliagroza / 8 - @notreallystatic <br>
 C++ Implementation: 1-7, 9-25 - @iuliagroza / 8 - @notreallystatic <br>
-Python Implementation: 1-2, 4-20 - @iuliagroza / 3, 21-24 - @MahmoudFettal <br>
+Python Implementation: 1-2, 4-20 - @iuliagroza / 3, 23-26 - @MahmoudFettal <br>
 Java Implementation: 3, 5 - @Abbeyme1 <br>
 
 ##### © Iulia Groza
