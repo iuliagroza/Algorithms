@@ -1,0 +1,40 @@
+(This code is contributed by @iuliagroza)
+
+Time complexity: O(n), where n is the length of the text
+Additional Space: O(m), where m is the length of the pattern
+
+PSEUDOCODE
+
+KMP(text, pattern)
+{
+  Array of Integer skip[MAX_DIM]
+  for i=1, i<n, i=i+1
+  {
+    while j>0 and pattern[i]!=pattern[j]
+    {
+      j <- skip[j-1]
+    }
+    if pattern[i]!=pattern[j]
+    {
+      j <- j+1
+    }
+    skip[i] <- j;
+  }
+  j <- 0
+  for i=0, i<m, i=i+1
+  {
+    while j>0 and text[i]!=pattern[j]
+    {
+      j <- skip[j-1]
+    }
+    if text[i]==pattern[j]
+    {
+      j <- j+1
+    }
+    if j==n
+    {
+      add to solution i-n+1
+    }
+  }
+  Output solution
+}

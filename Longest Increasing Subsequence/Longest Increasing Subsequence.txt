@@ -1,0 +1,12 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n*log n) (efficient)
+Additional Space: O(n)
+
+PSEUDOCODE
+
+(Recurrence relation for the length array)
+      | 1,                                              if A[i]>A[j], j = i+1, i+2, ..., n
+L[i] =| 1 + max(A[j], j=i+1, i+2, ..., n, A[j]>=A[i]),  otherwise  
+
+(To find a subsequence of maximal length we use an ind[] array that stores the index of each maximum value)

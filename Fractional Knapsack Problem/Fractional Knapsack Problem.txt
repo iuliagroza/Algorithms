@@ -1,0 +1,30 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n*log n) (sorting)
+
+PSEUDOCODE
+
+Fractional_Knapsack(n, maximum_weight, arr[value, weight])
+{
+  for i=1, i<=n, i=i+1
+  {
+    arr[i].profit <- arr[i].value/arr[i].weight  (Calculate the profit of each item)
+  }
+  sort(arr, arr.profit)  (Sort the list of items in ascending order by their profit)
+  current_weight <- maximum_weight
+  for i=1, i<=n, i=i+1
+  {
+    if current_weight > arr[i].weight  (If the object is not too heavy)
+    {
+      total_value <- total_value + arr[i].value
+      current_weight <- current_weight - arr[i].weight
+    }
+    else
+    {
+      (If whole_value/whole_weight = fractional_value/fractional_weight (proportionality), then we can deduct that fractional_value = (whole_value*fractional_weight)/whole_weight)
+      total_value <- total_value + Float((arr[i].value*current_weight)/arr[i].weight)
+      END OF FOR
+    }
+  }
+  Output total_value
+}

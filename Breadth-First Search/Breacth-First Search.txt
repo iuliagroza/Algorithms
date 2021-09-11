@@ -1,0 +1,26 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(|V|+|E|), where |V| is the number of vertices and |E| the number of edges
+Space Complexity: O(|V|)
+
+PSEUDOCODE
+
+BFS(node, G[][], visited[], dist[], queue[])
+{
+  vis[node] <- True
+  Q.push(node)
+  while Q is not empty
+  {
+    node <- Q.front
+    Q.pop
+    for i=1, i<=n, i=i+1
+    {
+      if vis[i]==False
+      {
+        dist[i] <- dist[node]+1
+        vis[i] <- True
+        Q.push(i)
+      }
+    }
+  }
+}

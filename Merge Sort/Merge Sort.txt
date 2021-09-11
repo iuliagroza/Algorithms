@@ -1,0 +1,17 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n*log2(n))
+Additional Space: O(n)
+
+PSEUDOCODE
+
+Merge_Sort(arr, left, right) 
+{
+  if left < right
+  {
+    mid -> (left+right)/2
+    Merge_Sort(arr, left, mid)
+    Merge_Sort(arr, mid+1, right)
+    Merge(arr, left, mid, right)
+  }
+} 

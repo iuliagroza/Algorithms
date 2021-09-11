@@ -1,0 +1,18 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(|V|^3), where |V| is the number of vertices
+Space Complexity: O(|V|^2)
+
+PSEUDOCODE
+
+Floyd_Warshall(n, a[][])
+{
+    for k=1, k<=n, k=k+1  (Intermediate node)
+    {
+        for i=1, i<=n, i=i+1
+        {
+            for j=1, j<=n, j=j+1
+            {
+                if i!=j and a[i][k]!=0 and a[k][j]!=0 and (a[i][j]==0 or a[i][j] > a[i][k]+a[k][j])) (Recurrence condition)
+                    a[i][j] = a[i][k]+a[k][j];
+}

@@ -1,0 +1,15 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+PSEUDOCODE
+
+Integer element
+for i=0, i<n, i=i+1
+{
+  if element == arr[i]
+  {
+    output: "The value {element} is found on the {i} index."
+  }
+}

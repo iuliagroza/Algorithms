@@ -1,0 +1,26 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n^2)
+Additional Space: O(1)
+
+PSEUDOCODE
+
+selectionSort(arr)
+{
+    for i=0, i<arr.length-1, i<-i+1
+    {
+        minIndex <- i
+        for j=i+1, j<arr.length, j<-j+1
+        {
+            if arr[minIndex} > arr[j]
+            {
+                minIndex <- j
+            }
+        }
+        
+        (swap)
+        aux <- a[i]
+        a[i] <- a[minIndex]
+        a[minIndex} <- a[i]
+    }
+}

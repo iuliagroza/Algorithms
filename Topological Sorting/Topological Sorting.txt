@@ -1,0 +1,34 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(|V|+|E|) (from BFS)
+Space Complexity: O(|V|^2)
+
+PSEUDOCODE
+
+Topological_Sorting(edges)
+{
+  Integer in[] = in-degree array
+  Stack S
+  for i=1, i<=n, i=i+1
+  {
+    if in[i] == 0
+    {
+      S.push(i)
+    }
+  }
+  while S.length != 0
+  {
+    node <- S[0]
+    S.pop(0)
+    sol.add(node)
+    for i=1, i<=edges[node].length, i=i+1
+    {
+      in[edges[node][i]] <- in[edges[node][i]]-1
+      if in[edges[node][i]] == 0
+      {
+        S.add(i)
+      }
+    }
+  }
+  Output sol
+}

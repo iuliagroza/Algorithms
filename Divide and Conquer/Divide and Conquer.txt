@@ -1,0 +1,22 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n) (for the Sum of n Elements problem)
+Space Complexity: O(n)
+
+PSEUDOCODE
+
+Divide_And_Conquer(array, start, finish)
+{
+  if basic_case(array, start, finish) 
+  {
+    return solution(array, start, finish)
+  }
+  else
+  {
+    middle -> divide(array, start, finish) // DIVIDE
+    S1 -> Divide_And_Conquer(array, start, mid) // CONQUER 1
+    S2 -> Divide_And_Conquer(array, mid+1, finish) // CONQUER 2
+    S -> S1 U S2 // MERGE
+    return S
+  }
+}

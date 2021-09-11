@@ -1,0 +1,22 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(|E|*log|V|)/O(|E|*log|E|), where |V| is the number of vertices and |E| the number of edges
+Additional Space: O(|V|)
+
+PSEUDOCODE
+
+Kruskal(n, m, edges)
+{
+  Sort edges
+  Array of pairs of Integers sol
+  for i=1, i<=m and sol.length<n-1, i=i+1
+  {
+    if edges.first and edges.second not in the same set
+    {
+      Unify(edges.first, edges.second)
+      cost <- cost+edges.distance
+      sol.add((edges.first, edges.second))
+    }
+  }
+  Output sol
+}

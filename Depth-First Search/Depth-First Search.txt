@@ -1,0 +1,20 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(|V|+|E|), where |V| is the number of vertices and |E| the number of edges
+Space Complexity: O(|V|)
+
+PSEUDOCODE
+
+(We represent the graph using an adjacency list G[][], where G[vertex1][vertex2]==G[vertex2][vertex1]==True only if vertex1 and vertex2 are adjacent. We also make use of a frequency array vis[] to see which nodes we have already visited.)
+
+DFS(node)
+{
+    vis[node] <- 1
+    for i=1, i<=G[node].length, i<-i+1
+    {
+        if vis[G[node][i]] == False
+        {
+            DFS(i)
+        }
+    }
+}
