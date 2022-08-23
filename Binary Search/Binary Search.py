@@ -19,7 +19,7 @@ def Binary_Search(arr, elem, left, right):
 a = [2, 56, 45, 13, 9, 0]
 a = sorted(a)
 n = len(a)
-value1 = 0  # Existent value
+value1 = 13  # Existent value
 value2 = 299 # Inexistent value
 
 index1 = Binary_Search(a, value1, 0, n)
