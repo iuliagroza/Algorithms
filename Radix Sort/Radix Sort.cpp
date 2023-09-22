@@ -17,14 +17,14 @@ N, A, B, C, given
 
 void Radix_Sort(vector<int>& v)
 {
-    vector<int> cnt(256);
-    vector<int> out((int)v.size());
-    for(int bit=0; bit<=31; bit+=8)
+    vector<int> cnt(256);//create a vector array of sixe 256
+    vector<int> out((int)v.size());// create a vector array same size as input array
+    for(int bit=0; bit<=31; bit+=8)//loop runs 4 times
     {
         for(auto& x:v)
-            cnt[(x>>bit)&255]++;
+            cnt[(x>>bit)&255]++;//right shift and perform and operation
         for(int i=1; i<256; i++)
-            cnt[i]+=cnt[i-1];
+            cnt[i]+=cnt[i-1];//give alternating pairs of the array same value
         for(int i=(int)v.size()-1; i>=0; i--)
             out[--cnt[(v[i]>>bit)&255]]=v[i];
         v=out;
