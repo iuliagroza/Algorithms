@@ -27,7 +27,6 @@ public class MergeSort {
     
     }
 
-
     public static <T extends Comparable<T>> void mergeSort(List<T> list) {
         if (list == null)
             return;
@@ -77,10 +76,6 @@ public class MergeSort {
         while (currentRight < right.size()) {
             temp.set(currentTemp++, right.get(currentRight++));
         }   
-
     }
-
-
-
 }
 
