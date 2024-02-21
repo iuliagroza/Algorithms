@@ -1,11 +1,9 @@
 # Algorithms
 
-*If you would like to contribute to this repo, please contact me.*
-
 This is a continuously updating list of some of the most essential algorithms implemented in pseudocode, C++14, Python 3.6 and Java. You can find a comprehensive explanation of some of the algorithms present in this repo here: <br>
 * https://dev.to/iuliagroza/complete-introduction-to-the-30-most-essential-data-structures-algorithms-43kd
 * https://medium.com/marketing-and-entrepreneurship/complete-introduction-to-the-30-most-essential-data-structures-algorithms-5f8090773d21
-* https://twitter.com/gg_iulia
+* https://twitter.com/_iuliagroza
 
 ### Contents
 1. Divide and conquer
@@ -35,9 +33,10 @@ This is a continuously updating list of some of the most essential algorithms im
 25. Kruskal 
 26. Topological Sorting 
 
-Pseudocode Implementation: 1-7, 9-25 - @iuliagroza / 8 - @notreallystatic <br>
-C++ Implementation: 1-7, 9-25 - @iuliagroza / 8 - @notreallystatic <br>
-Python Implementation: 1-2, 4-22 - @iuliagroza / 3, 23-26 - @MahmoudFettal <br>
-Java Implementation: 3, 5 - @Abbeyme1 <br>
+### Contribution guide
+1. Create an **issue** where you document your contribution (i.e. mention the **algorithm** you want to develop the source code for, and the **programming language**).
+2. Propose your changes in a **new branch** with the name `<issue_id> <algorithm_name> <programming_language>` and create a **pull request**.
+3. **[IMPORTANT]** Please make sure to be consistent in terms of project/directories structure and style guide!
+4. Wait for review & approvals, and be proud of yourself :) Your contribution is highly appreciated!
 
 ##### © Iulia Groza
