@@ -1,4 +1,4 @@
-# Algorithms
+<img src="logo.png"/>
 
 This is a continuously updating list of some of the most essential algorithms implemented in pseudocode, C++14, Python 3.6 and Java. You can find a comprehensive explanation of some of the algorithms present in this repo here: <br>
 * https://dev.to/iuliagroza/complete-introduction-to-the-30-most-essential-data-structures-algorithms-43kd
