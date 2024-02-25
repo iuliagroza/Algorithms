@@ -5,6 +5,8 @@ This is a continuously updating list of some of the most essential algorithms im
 * https://medium.com/marketing-and-entrepreneurship/complete-introduction-to-the-30-most-essential-data-structures-algorithms-5f8090773d21
 * https://twitter.com/_iuliagroza
 
+-----
+
 ### Contents
 1. Divide and conquer
 2. Bubble Sort
@@ -31,7 +33,9 @@ This is a continuously updating list of some of the most essential algorithms im
 23. Dijkstra 
 24. Bellman-Ford 
 25. Kruskal 
-26. Topological Sorting 
+26. Topological Sorting
+
+-----
 
 ### Contribution guide
 1. Create an **issue** where you document your contribution (i.e. mention the **algorithm** you want to develop the source code for, and the **programming language**).
