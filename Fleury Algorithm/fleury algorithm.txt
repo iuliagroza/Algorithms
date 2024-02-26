@@ -34,10 +34,11 @@ IsBridge(nod, it, G, viz)
   }
 
   // If the DFS cannot reach all nodes, then the edge is a bridge 
-  for i=0 to nMax
+  for i=0, i<=n, i=i+1
+  {
     if visited[i] == False 
       return True
-
+  }
   return False // Edge is not a bridge 
 }
 
@@ -63,7 +64,7 @@ AllNodesReached(visited)
 Fleury(nod, G, e, viz)
 {
   // Find a starting node with odd degree, if it exists 
-  for i=0 to nMax
+  for i=0, i<=n, i=i+1
     if Degree(G[i]) is odd
       nod <- i
       break
@@ -98,7 +99,7 @@ Fleury_Step(nod, G, e, viz)
   n, m <- READ_FROM_FILE(argv[1]) // Read number of nodes and edges
   Array G[nMax]                   // Adjacency list representation of graph
 
-  for i=1 to m  // Construct the graph from input
+  for i=1, i<=m, i=i+1  // Construct the graph from input
   {
     x, y <- READ_FROM_FILE(argv[1]) 
     G[x].add({y, i})
@@ -111,7 +112,7 @@ Fleury_Step(nod, G, e, viz)
   Fleury(0, G, e, viz) // Start Eulerian path/circuit search at node 0
 
   // Output the path/circuit in reverse order 
-  for i=size(e)-1 to 1 
+  for i=size(e)-1, i>=1, i=i-1
   {
     WRITE_TO_FILE(argv[2], e[i]) 
   }
