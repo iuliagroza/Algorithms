@@ -1,7 +1,7 @@
 (This code is contributed by @abhi-jeet-kumar)
 
-Time Complexity: O(|V|+|E|), where |V| is the number of vertices and |E| the number of edges
-Space Complexity: O(|V|)
+Time Complexity: O(E^2), where V is the number of vertices and E the number of edges
+Space Complexity: O(V+E)
 
 PSEUDOCODE
 
