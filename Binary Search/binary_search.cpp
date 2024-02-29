@@ -1,6 +1,7 @@
 /// This code is contributed by @iuliagroza
 
 /// Time complexity: O(log n)
+/// Additional space: O(1)
 
 #include <iostream>
 #include <vector>
