@@ -1,0 +1,61 @@
+(This code is contributed by @notreallystatic)
+
+Time Complexity: O(nlogn)
+Space Complexity: O(1) (Arrange the array into a heap, in place.)
+
+
+PSEUDOCODE
+
+function heapSort(arr)
+{
+  Arrange the array into a max heap, in place.
+  Heapfiy all the interior nodes of the tree represented by our array, to create a max heap.
+  Start from the second last layer and move to the left so that every node in itself has the heap property. Once a particular layer is traversed, move up till to the root & do the same.
+  Ex:
+             1
+        2          3
+      4   5      6   7
+  In the above example, we first start 3 so that this particular sub-tree is a heap. Then, we move to 2 and do the same, then finally 1.
+  n = size(arr)
+  for i=n/2-1, i>=0, --i
+  {
+    heapify(arr, k, n);
+  }
+
+  Swap the top(max) element of the heap with the last element of array, thus putting it to its correct position.
+  Decrease the size of the heap by 1 and heapfiy the element at the top position, so that  this new array follows the heap property.
+  for i=n-1; i >= 0; --i
+  {
+    swap(arr[i], arr[0]);
+    heapify(arr, 0, i);
+  }
+}
+
+function heapify(arr, k, n)
+{
+  l = left(i)
+  r = right(i)
+  Let the current node have the largest value
+  largest = i
+  if l < n and arr[l] > arr[largest]
+    left child's value is greater than largest
+    largest = 1
+  else r < n and arr[l] > arr[largest]
+    right child's value is greater than largest
+    largest = r
+  if (largest != i)
+    Root element is not the largest compared to left & right. Put the largest element at root(i in this case) and heapify the updated sub tree.
+    heapify(arr, largest, n)
+}
+
+function left(i)
+{
+    Left child of the i'th element
+    return (2 * i + 1)
+}
+
+function right(i)
+{
+  Right child of the i'th element
+  return (2 * i + 2)
+}

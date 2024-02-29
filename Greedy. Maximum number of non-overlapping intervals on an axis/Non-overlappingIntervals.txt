@@ -1,0 +1,40 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n*log n) (sorting)
+Additional Space: O(n)
+
+PSEUDOCODE
+
+Greedy(C)  (C is the candidate set)
+{
+  S <- Ø  (S is the solution set. It is initially empty)
+  while C != Ø
+  {
+    choose(x)  (x is one element that meets all the requirements)
+    if possible(S U {x})
+    {
+      S <- S U {x}
+      C <- C \ {x}  (we eliminate x from the candidate set)
+    }
+  }
+  Output S
+}
+
+
+Given n plays at a theater with their starting and ending time (expressed as integers), determine the number of non-overlapping full plays a spectator can watch.
+(MAXIMUM NUMBER OF NON-OVERLAPPING INTERVALS ON AN AXIS)
+ex. IN:
+        10
+        5 14
+        14 17
+        8 13
+        13 15
+        15 17
+        3 6
+        4 7
+        6 9
+        11 14
+        10 11
+    OUT:
+        5
+We can choose [3, 6], [6, 9], [10, 11], [11, 14] and [14, 17].

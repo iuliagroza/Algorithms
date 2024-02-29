@@ -1,0 +1,25 @@
+(This code is contributed by @iuliagroza)
+
+Time complexity: O(n*log n)
+Space Complexity: O(n)
+
+PSEUDOCODE
+
+Convex_Hull(arr[], n)
+{
+  Sort(arr[])
+  Reverse_Copy(arr, arr[0:n-1])  (Copy the first n-1 elements to a[], in descending order)
+  Integer hull[]
+  for i=0, i<2*n-1, i=i+1
+  {
+    H <- hull.length
+    while H>1 and slope(hull[H-1], hull[H-2], arr[i])
+    {
+      H <- H-1
+    }
+    hull[H]=arr[i]
+    H <- H+1
+  }
+  hull.remove_last_element
+  Output hull
+}

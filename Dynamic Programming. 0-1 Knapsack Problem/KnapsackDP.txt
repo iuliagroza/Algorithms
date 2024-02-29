@@ -1,0 +1,11 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n*W)
+Space Complexity: O(n) (optimized)
+
+PSEUDOCODE
+
+(Recurrence relation for O(n^2) space complexity - !! 0-indexed array of items)
+            | 0,                                        if i=0, cw=0;
+dp[i][cw] = | dp[i-1][cw],                              if w[i] > cw;
+            | max(dp[i-1][cw], dp[i-1][cw-w[i]]+v[i]),  if i>0, w[i] < cw.

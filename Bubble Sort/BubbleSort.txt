@@ -1,0 +1,20 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n^2)
+Space Complexity: O(n)
+
+PSEUDOCODE
+
+Bubble_Sort(arr, n) 
+{
+  for i=0, i<n-1, i=i+1
+  {
+    for j=0, j<n-i+1; j=j+1
+    {
+      if arr[j]>arr[j+1]
+      {
+        swap(arr[j], arr[j+1])
+      }
+    }
+  }
+}

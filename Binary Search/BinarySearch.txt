@@ -1,0 +1,29 @@
+(This code is contributed by @iuliagroza)
+
+Time complexity: O(log n)
+
+PSEUDOCODE
+
+Binary_Search(arr, elem, left, right)
+{
+  if right >= left
+  {
+    middle <- (left+right)/2
+    if arr[middle] == elem
+    {
+      return middle
+    }
+    else if arr[middle] > elem
+    {
+      return Binary_Search(arr, elem, left, middle)
+    }
+    else
+    {
+      return Binary_Search(arr, elem, middle+1, right)
+    }
+  }
+  else
+  {
+    return -1
+  }
+}

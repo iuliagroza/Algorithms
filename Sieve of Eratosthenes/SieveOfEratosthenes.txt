@@ -1,0 +1,21 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n*log(log n)) - classical
+                 O(n) - optimized
+Space Complexity: O(n)
+
+PSEUDOCODE
+
+Sieve_Of_Eratosthenes(n)
+{
+  for d=2, d*d<=n, d=d+1
+  {
+    if sieve[d]==0
+    {
+      for i=d*d, i<=n, i=i+d
+      {
+        sieve[i] <- 1
+      }
+    }
+  }
+}

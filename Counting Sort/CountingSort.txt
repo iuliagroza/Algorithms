@@ -1,0 +1,36 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(Max-Min), where Max and Min are the maximum, respectively the minimum value of the array
+Additional Space: O(Max)
+
+PSEUDOCODE
+
+Counting_Sort(arr, n)
+{
+  Integer Min -> arr[0]
+  Integer Max -> arr[0]
+  Integer frequency[100001] -> {0}
+  frequency[arr[0]] -> frequency[arr[0]]+1
+  for i=1, i<n, i=i+1
+  {
+    frequency[a[i]] -> frequency[arr[i]]+1
+    if Max < arr[i]
+    {
+      Max -> arr[i]
+    }
+    if Min > arr[i]
+    {
+      Min -> arr[i]
+    }
+  }
+  Integer new_n -> 0
+  for i=Min, i<=Max, i=i+1
+  {
+    for j=0, j<frequency[i], j=j+1
+    {
+      arr[new_n] -> i
+      new_n -> new_n+1
+    }
+  }
+  n -> new_n
+}

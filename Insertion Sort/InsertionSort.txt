@@ -1,0 +1,22 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n^2)
+Space Complexity: O(1)
+
+PSEUDOCODE
+
+Insertion_Sort(arr, n) 
+{
+  (We consider the array to be 1-indexed)
+  for i=2, i<=n, i=i+1
+  {
+    key <- a[i]
+    j <- i-1      
+    while j>0 and a[j]>key
+    {          
+      a[j+1] <- a[j]
+      j <- j-1
+    }
+    a[j+1] <- key
+  }
+}

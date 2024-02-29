@@ -1,0 +1,16 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n*log2(n))
+Space Complexity: O(n) (no additional space)
+
+PSEUDOCODE
+
+Quick_Sort(arr[], start, finish)
+{
+    if start < finish
+    {
+        pivot = partition(arr, start, finish) //start, finish or (start+finish)/2
+        quickSort(arr, start, pivot-1)
+        quickSort(arr, pivot+1, finish)
+    }
+}

@@ -1,0 +1,119 @@
+(This code is contributed by @abhi-jeet-kumar)
+
+Time Complexity: O(E^2), where V is the number of vertices and E the number of edges
+Space Complexity: O(V+E)
+
+PSEUDOCODE
+
+// Function to check if the removal of an edge would disconnect the graph
+IsBridge(nod, it, G, viz)
+{
+  // Temporarily mark edge as visited
+  viz[it.second] <- True  
+
+  // Perform a modified DFS starting from 'nod', but avoiding the marked edge 
+  stack S
+  visited[nMax] <- False  // Array to track visited nodes during DFS
+  S.push(nod)
+
+  while S is not empty
+  {
+    current <- S.top()
+    S.pop()
+
+    if not visited[current]
+    {
+      visited[current] <- True
+
+      for neighbor in G[current]
+      {
+        if neighbor.second != it.second AND viz[neighbor.second] == False
+          S.push(neighbor.first)
+      }
+    }
+  }
+
+  // If the DFS cannot reach all nodes, then the edge is a bridge 
+  for i=0, i<=n, i=i+1
+  {
+    if visited[i] == False 
+      return True
+  }
+  return False // Edge is not a bridge 
+}
+
+// Function to calculate the degree of a node
+Degree(node)
+{
+  count <- 0
+  for neighbor in G[node]
+    count <- count + 1
+  return count
+}
+
+// Function to check if all nodes were reached in a DFS
+AllNodesReached(visited)
+{
+  for i=0 to nMax
+    if visited[i] == False
+      return False
+  return True
+}
+
+// Fleury's Algorithm for finding Eulerian path/circuit
+Fleury(nod, G, e, viz)
+{
+  // Find a starting node with odd degree, if it exists 
+  for i=0, i<=n, i=i+1
+    if Degree(G[i]) is odd
+      nod <- i
+      break
+
+  // Choose any arbitrary starting node if all degrees are even
+  if nod is not set
+    nod <- 0
+
+  Fleury_Step(nod, G, e, viz)
+}
+
+Fleury_Step(nod, G, e, viz)
+{
+  for it in G[nod]  
+  {
+    if viz[it.second] == False // Edge not visited yet
+    {
+      if not IsBridge(nod, it, G, viz)
+      {
+        viz[it.second] <- True  // Mark edge as visited
+        Fleury_Step(it.first, G, e, viz)  // Recursively explore
+        break // Move to the next node
+      }
+    }
+  }
+  e.add(nod) // Add current node to the path/circuit
+}
+
+// Main Procedure
+{ 
+  // Input file and output file names are in argv[1] and argv[2]
+  n, m <- READ_FROM_FILE(argv[1]) // Read number of nodes and edges
+  Array G[nMax]                   // Adjacency list representation of graph
+
+  for i=1, i<=m, i=i+1  // Construct the graph from input
+  {
+    x, y <- READ_FROM_FILE(argv[1]) 
+    G[x].add({y, i})
+    G[y].add({x, i})
+  }
+
+  Array e            // To store the Eulerian path/circuit
+  Bitset viz         // To keep track of visited edges
+
+  Fleury(0, G, e, viz) // Start Eulerian path/circuit search at node 0
+
+  // Output the path/circuit in reverse order 
+  for i=size(e)-1, i>=1, i=i-1
+  {
+    WRITE_TO_FILE(argv[2], e[i]) 
+  }
+}

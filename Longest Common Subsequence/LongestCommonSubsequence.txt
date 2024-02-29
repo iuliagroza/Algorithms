@@ -1,0 +1,12 @@
+(This code is contributed by @iuliagroza)
+
+Time Complexity: O(n*m), where n is the length of the A sequence and m the length of the B sequence.
+Additional Space: O(n*m)
+
+PSEUDOCODE
+
+(Recurrence relation)
+lcs[i][0]=0, i=1,...,n
+lcs[0][j]=0, j=1,...,m
+            | lcs[i-1][j-1],                 if A[i]==B[i]
+lcs[i][j] = | max(lcs[i-1][j], lcs[i][j-1],  if A[i]!=B[i] 
