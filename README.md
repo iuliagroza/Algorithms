@@ -8,32 +8,33 @@ This is a continuously updating list of some of the most essential algorithms im
 -----
 
 ### Contents
-1. Divide and conquer
-2. Bubble Sort
-3. Insertion Sort
-4. Counting Sort
-5. Selection Sort
-6. Merge Sort
-7. Quick Sort
-8. Heap Sort
-9. Radix Sort
-10. Linear Search
-11. Binary Search
-12. Sieve of Erathostenes
-13. Knuth-Morris-Pratt Algorithm (KMP)
+1. Bellman-Ford
+2. Binary Search
+3. Breadth-First Search (BFS)
+4. Bubble Sort
+5. Convex Hull
+6. Counting Sort
+7. Depth-First Search (DFS)
+8. Dijkstra
+9. Divide & Conquer
+10. Dynamic Programming. 0-1 Knapsack Problem
+11. Fleury
+12. Floyd-Warshall / Roy-Floyd
+13. Fractional Knapsack Problem
 14. Greedy. Maximum number of non-overlapping intervals on an axis
-15. Fractional Knapsack Problem
-16. Dynamic Programming. 0-1 Knapsack Problem
-17. Longest Common Subsequence
-18. Longest Increasing Subsequence
-19. Convex Hull
-20. Breadth-First Search (BFS)
-21. Depth-First Search (DFS)
-22. Floyd-Warshall / Roy-Floyd
-23. Dijkstra 
-24. Bellman-Ford 
-25. Kruskal 
-26. Topological Sorting
+15. Heap Sort
+16. Insertion Sort
+17. Knuth-Morris-Pratt (KMP)
+18. Kruskal
+19. Linear Search
+20. Longest Common Subsequence
+21. Longest Increasing Subsequence
+22. Merge Sort
+23. Quick Sort
+24. Radix Sort
+25. Selection Sort
+26. Sieve of Erathostenes
+27. Topological Sorting
 
 -----
 
