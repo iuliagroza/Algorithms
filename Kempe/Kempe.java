@@ -1,3 +1,10 @@
+//This code was contributed by Riyazul555
+
+
+//Time Complexity = O(N^N)
+//Space Complexity = O(N)
+
+
 import java.io.*;
 import java.util.*;
 
