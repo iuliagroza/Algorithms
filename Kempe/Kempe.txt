@@ -1,44 +1,40 @@
 
-This code is contributed by Riyazul555
+(This code is contributed by Riyazul555)
 
 
-Time Complexity = O(N^2)
-Space Complexity = O(N)
+Time Complexity = O(2^N)
+Space Complexity = O(N + M)
 
+PSEUDOCODE
 
-This is the PSEUDOCODE of Kempe's Algrithm 
-
-
-
-
-procedure BFS(nod, G, viz)
+function BFS(nod, G, viz)
     Q = Queue()
-    viz[nod] = true
-    Q.push(nod)
-    while Q is not empty
-        nod = Q.front()
+    viz[nod] <- True
+    Q.push((0, nod))
+    while not Q.empty()
+        _, nod = Q.front()
         Q.pop()
         for i in G[nod]
             if not viz[i]
-                viz[i] = true
-                Q.push(i)
+                viz[i] <- True
+                Q.push((0, i))
 
-procedure isConnected(n, m, G, vert)
-    viz = array of size nMax initialized to false
+function isConnected(n, m, G, vert)
+    viz = array of size nMax initialized to False
     BFS(vert[0], G, viz)
     for i in vert
         if not viz[i]
-            return false
-    return true
+            return False
+    return True
 
-procedure isComplete(n, G, vert)
+function isComplete(n, G, vert)
     for i in vert
-        if size of G[i] is not n - 1
-            return false
-    return true
+        if size of G[i] != n - 1
+            return False
+    return True
 
-procedure chromaticPolynomial(k, n, m, G, vert)
-    if m is 0
+function chromaticPolynomial(k, n, m, G, vert)
+    if m == 0
         p = 1
         for i from 1 to n
             p = (p % MOD * k % MOD) % MOD
@@ -48,52 +44,52 @@ procedure chromaticPolynomial(k, n, m, G, vert)
         for i from k - n + 1 to k
             p = (p % MOD * i % MOD) % MOD
         return p
-    if isConnected(n, m, G, vert) and m is n - 1
+    if isConnected(n, m, G, vert) and m == n - 1
         p = k % MOD
         for i from 1 to n - 1
             p = (p % MOD * (k - 1) % MOD) % MOD
         return p
     G1 = array of lists of integers of size nMax
     ind = 0
-    while size of G[vert[ind]] is 0
+    while size of G[vert[ind]] == 0
         ind++
     p1 = vert[ind]
     p2 = G[p1].back()
     for i in vert
         for j in G[i]
-            if (i is p1 and j is p2) or (i is p2 and j is p1)
+            if (i == p1 and j == p2) or (i == p2 and j == p1)
                 continue
             G1[i].push_back(j)
     vert2 = array of integers
     for i in vert
-        if i is not p2
+        if i != p2
             vert2.push_back(i)
     G2 = array of lists of integers of size nMax
     for i in vert2
         for j in G1[i]
-            if j is p2
-                if p1 is not in G2[i]
+            if j == p2
+                if p1 not in G2[i]
                     G2[i].push_back(p1)
             else
-                if j is not in G2[i]
+                if j not in G2[i]
                     G2[i].push_back(j)
-        if i is p1
+        if i == p1
             for j in G1[p2]
-                if j is not in G2[i]
+                if j not in G2[i]
                     G2[i].push_back(j)
     sz = 0
     for i in vert2
         sz += size of G2[i]
-    sz /= 2
+    sz //= 2
     return (chromaticPolynomial(k, n, m - 1, G1, vert) % MOD - chromaticPolynomial(k, n - 1, sz, G2, vert2) % MOD + MOD) % MOD
 
-procedure chromaticNumber(n, m, G, vert)
+function chromaticNumber(n, m, G, vert)
     for i from 1 to n
-        if chromaticPolynomial(i, n, m, G, vert) is not 0
+        if chromaticPolynomial(i, n, m, G, vert) != 0
             return i
     return -1
 
-procedure main()
+function main()
     n, m = read from input file
     G = array of lists of integers of size nMax
     for i from 1 to m
@@ -105,41 +101,38 @@ procedure main()
         vert.push_back(i)
     k = chromaticNumber(n, m, G, vert)
     write k to output file
-    st_sz = 0
     st = array of integers of size nMax
     gr = array of integers of size nMax
     for i from 0 to n - 1
         gr[i] = size of G[i]
-    while st_sz is less than n
+    while len(st) < n
         cnt = 0
         for i from 0 to n - 1
-            if gr[i] is greater than -1 and gr[i] is less than k
+            if gr[i] > -1 and gr[i] < k
                 gr[i] = -1
-                st[st_sz] = i
-                st_sz++
+                st.append(i)
                 for j in G[i]
-                    gr[j]--
-                cnt++
-        if cnt is 0
+                    gr[j] -= 1
+                cnt += 1
+        if cnt == 0
             pos = 0
-            while gr[pos] is -1 and pos is less than n - 1
+            while gr[pos] == -1 and pos < n - 1
                 pos++
             gr[pos] = -1
-            st[st_sz] = pos
-            st_sz++
+            st.append(pos)
             for j in G[pos]
-                gr[j]--
+                gr[j] -= 1
     col = array of integers of size nMax
     fill col with -1
-    for i from st_sz - 1 to 0 step -1
-        ap = array of booleans of size k initialized to false
+    for i from len(st) - 1 to 0 step -1
+        ap = array of booleans of size k initialized to False
         for j in G[st[i]]
-            if col[j] is not -1
-                ap[col[j]] = true
+            if col[j] != -1
+                ap[col[j]] = True
         ncol = 0
-        while ap[ncol] and ncol is less than k
+        while ap[ncol] and ncol < k
             ncol++
-        if ncol is less than k
+        if ncol < k
             col[st[i]] = ncol
     for i from 0 to n - 1
         write col[i] to output file
