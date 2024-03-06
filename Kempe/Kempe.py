@@ -2,10 +2,8 @@
 # This code is contributed by Riyazul555
 
 
-# Time Complexity = O(N * M * f(N, M))
+# Time Complexity = O(2^N)
 # Space Complexity = O(N)
-
-
 
 from functools import reduce
 from collections import deque
@@ -39,7 +37,7 @@ def chromatic_polynomial(k, n, m, G, vert):
         return reduce(lambda x, y: (x * y) % MOD, range(k - n + 1, k + 1), 1)
 
     if is_connected(G, vert) and m == n - 1:
-        return reduce(lambda x, y: (x * (k - 1)) % MOD, range(1, n), k % MOD)
+        return reduce(lambda x, y: (x * (k - 1)) % MOD, range(1, n), k)
 
     G1 = [[] for _ in range(len(G))]
     ind = next(i for i, val in enumerate(vert) if G[val])
