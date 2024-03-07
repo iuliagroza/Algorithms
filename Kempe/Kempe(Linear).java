@@ -1,7 +1,7 @@
 //This code is contributed by Riyazul555
 
-// Time Complexity = O(N^2 + N * (N+M))
-// Space Complexity = O(N+M)
+// Time Complexity = O(N*(N+M))   N represents the number of vertices in the graph.
+// Space Complexity = O(N+M)      M represents the number of edges in the graph.
 
 
 import java.io.*;
