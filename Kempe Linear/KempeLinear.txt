@@ -1,0 +1,120 @@
+("This code is contributed by Riyazul555")
+
+Time Complexity = O(N * (N + M))  N represents number of vertices 
+Space Complexity = O(N + M)       M represents number of edges
+
+Procedure graphColoringAlgorithm()
+{
+    Read n, m from "pc.in"
+    Create an array G of size nMax to represent the graph (adjacency list)
+
+    For i = 1 to m
+    {
+        Read x, y from "pc.in"
+        Add y to G[x]
+        Add x to G[y]
+    }
+
+    Create an array vert of size n and populate it with values from 0 to n-1
+
+    Set more_colors to True
+    Initialize solk to 0
+    Create an array colk of size nMax, initialized to 0
+
+    For k = 1 to n AND more_colors is True
+    {
+        Initialize st_sz, st, gr arrays of size nMax
+        For i = 0 to n-1
+        {
+            Set gr[i] to the number of neighbors of vertex i in G
+        }
+
+        While st_sz < n
+        {
+            Initialize cnt to 0
+            For i = 0 to n-1
+            {
+                If gr[i] is greater than or equal to 0 AND gr[i] is less than k
+                {
+                    Set gr[i] to -1
+                    Add i to st
+                    Increment st_sz
+                    For each j in G[i]
+                    {
+                        Decrement gr[j] by 1
+                    }
+                    Increment cnt
+                }
+            }
+
+            If cnt is 0
+            {
+                Initialize pos to 0
+                While gr[pos] is -1 AND pos < n-1
+                {
+                    Increment pos
+                }
+                Set gr[pos] to -1
+                Add pos to st
+                Increment st_sz
+                For each j in G[pos]
+                {
+                    Decrement gr[j] by 1
+                }
+            }
+        }
+
+        Initialize col array of size nMax, fill it with -1
+        For i = st_sz - 1 down to 0
+        {
+            Initialize ap array of size k, all elements set to False
+            For each j in G[st[i]]
+            {
+                If col[j] is greater than or equal to 0
+                {
+                    Set ap[col[j]] to True
+                }
+            }
+
+            Initialize ncol to 0
+            While ap[ncol] is True AND ncol < k
+            {
+                Increment ncol
+            }
+
+            If ncol < k
+            {
+                Set col[st[i]] to ncol
+            }
+            Else
+            {
+                Set col[st[i]] to -2
+            }
+        }
+
+        Set ok to True
+        Initialize Max to -1
+
+        For i = 0 to n-1
+        {
+            If col[i] is less than 0
+            {
+                Set ok to False
+            }
+            Set Max to maximum of Max and col[i]
+        }
+
+        If ok is True
+        {
+            Set solk to Max + 1
+            Copy values from col to colk
+            Set more_colors to False
+        }
+    }
+
+    Write solk to "pc.out"
+    For i = 0 to n-1
+    {
+        Write colk[i] followed by a space to "pc.out"
+    }
+}
