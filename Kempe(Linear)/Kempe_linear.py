@@ -1,79 +1,66 @@
-# This code is contibuted by Riyazul555
+# This code is contributed by Riyazul555
 
-# Time complexity = O(N * (N + M))  N represents number of vertices
-# Space complexity = O(N + M)       M represnts number of  edges
-
+# Time complexity = O(N*(N + M))  N represents the number of vertices
+# Space complexity = O(N + M)     M represents the number of edges
 
 def graph_coloring():
-    n_max = 25
     fin = open("pc.in", "r")
     fout = open("pc.out", "w")
 
     n, m = map(int, fin.readline().split())
-    G = [[] for _ in range(n_max)]
+    G = [[] for _ in range(n)]
 
     for _ in range(1, m + 1):
         x, y = map(int, fin.readline().split())
         G[x].append(y)
         G[y].append(x)
 
-    vert = list(range(n))
     more_colors = True
     solk = 0
-    colk = [0] * n_max
+    colk = [0] * n
 
     for k in range(1, n + 1):
-        st_sz = 0
-        st = [0] * n_max
-        gr = [0] * n_max
+        st = [0] * n
+        gr = [len(G[i]) for i in range(n)]
 
-        for i in range(n):
-            gr[i] = len(G[i])
-
-        while st_sz < n:
+        while st[0] < n:
             cnt = 0
             for i in range(n):
                 if gr[i] > -1 and gr[i] < k:
                     gr[i] = -1
-                    st[st_sz] = i
-                    st_sz += 1
+                    st[st[0]] = i
+                    st[0] += 1
                     for j in G[i]:
                         gr[j] -= 1
                     cnt += 1
 
             if cnt == 0:
-                pos = 0
-                while gr[pos] == -1 and pos < n - 1:
-                    pos += 1
-                gr[pos] = -1
-                st[st_sz] = pos
-                st_sz += 1
-                for j in G[pos]:
-                    gr[j] -= 1
+                try:
+                    pos = next(i for i in range(n) if gr[i] != -1)
+                    gr[pos] = -1
+                    st[st[0]] = pos
+                    st[0] += 1
+                    for j in G[pos]:
+                        gr[j] -= 1
+                except StopIteration:
+                    break
 
-        col = [-1] * n_max
+        col = [-1] * n
 
-        for i in range(st_sz - 1, -1, -1):
+        for i in range(st[0] - 1, -1, -1):
             ap = [False] * k
             for j in G[st[i]]:
                 if col[j] >= 0:
                     ap[col[j]] = True
-            ncol = 0
-            while ap[ncol] and ncol < k:
-                ncol += 1
+            ncol = next(ncol for ncol in range(k) if not ap[ncol])
 
             if ncol < k:
                 col[st[i]] = ncol
             else:
                 col[st[i]] = -2
 
-        ok = True
-        Max = -1
-
-        for i in range(n):
-            if col[i] < 0:
-                ok = False
-            Max = max(Max, col[i])
+        ok = all(col[i] >= 0 for i in range(n))
+        Max = max(col)
 
         if ok:
             solk = Max + 1
