@@ -24,17 +24,19 @@ This is a continuously updating list of some of the most essential algorithms im
 14. Greedy. Maximum number of non-overlapping intervals on an axis
 15. Heap Sort
 16. Insertion Sort
-17. Knuth-Morris-Pratt (KMP)
-18. Kruskal
-19. Linear Search
-20. Longest Common Subsequence
-21. Longest Increasing Subsequence
-22. Merge Sort
-23. Quick Sort
-24. Radix Sort
-25. Selection Sort
-26. Sieve of Erathostenes
-27. Topological Sorting
+17. Kempe
+18. Kempe Linear
+19. Knuth-Morris-Pratt (KMP)
+20. Kruskal
+21. Linear Search
+22. Longest Common Subsequence
+23. Longest Increasing Subsequence
+24. Merge Sort
+25. Quick Sort
+26. Radix Sort
+27. Selection Sort
+28. Sieve of Erathostenes
+29. Topological Sorting
 
 -----
 
