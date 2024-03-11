@@ -1,8 +1,8 @@
 //This code was contributed by Riyazul555
 
 
-//Time Complexity = O(N^N)
-//Space Complexity = O(N)
+//Time Complexity = O(2^N), where N is the number of vertices
+//Space Complexity = O(N + M), where M is the number of edges
 
 
 import java.io.*;
