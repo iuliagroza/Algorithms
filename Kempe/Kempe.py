@@ -2,8 +2,8 @@
 # This code is contributed by Riyazul555
 
 
-# Time Complexity = O(2^N)
-# Space Complexity = O(N)
+# Time Complexity = O(2^N), where N is the number of vertices
+# Space Complexity = O(N + M), where M is the number of edges
 
 from functools import reduce
 from collections import deque
