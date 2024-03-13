@@ -1,4 +1,3 @@
-
 #This code is contributed by Riyazul555
 
 # Time Complexity = O(N)  where N is number of elements in input array 
