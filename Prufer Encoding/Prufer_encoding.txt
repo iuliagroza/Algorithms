@@ -1,0 +1,53 @@
+("This code is contributed by Riyazul555")
+
+Time complexity  = O(N)  N is the number of nodes in the tree
+Space complexity = O(N)  N is the number of nodes in the tree
+
+
+Open input file (argv[1])
+Open output file (argv[2])
+
+Read n from input file
+
+Initialize arrays daddy and deg with size nMax
+Set all elements of deg to 0
+
+for i from 0 to n-1 {
+    Read daddy[i] from input file
+    Increment deg[i]
+    Increment deg[daddy[i]]
+}
+
+Set ptr to -1
+
+for i from 0 to n-1 {
+    if deg[i] is equal to 1 and ptr is equal to -1 {
+        Set ptr to i
+    }
+}
+
+Initialize an empty vector sol
+
+Set leaf to ptr
+
+for i from 0 to n-2 {
+    Set nxt to daddy[leaf]
+    Add nxt to the end of sol
+    Decrement deg[nxt]
+    if deg[nxt] is equal to 1 and nxt is less than ptr {
+        Set leaf to nxt
+    } else {
+        Increment ptr
+        while deg[ptr] is not equal to 1 {
+            Increment ptr
+        }
+        Set leaf to ptr
+    }
+}
+
+Write n-1 to output file followed by a newline
+for each element i in sol {
+    Write i followed by a space to output file
+}
+
+Close input and output files
