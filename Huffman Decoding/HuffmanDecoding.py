@@ -6,6 +6,7 @@
 
 import sys
 
+nMax = 1000 
 def dfs(nod, val, G, cod):
     if G[nod][0] == -1:
         cod[nod] = val
