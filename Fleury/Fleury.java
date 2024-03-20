@@ -1,14 +1,12 @@
 // This code is contributed by Riyazul555
 
-// Time Complexity  =  O(V + E)  where V is the number of vertices and E is the number of edges.
-// Space Complexity =  O(V + E)  where V is the number of vertices and E is the number of edges.
+// Time Complexity  =  O(V + E)  
+// Space Complexity =  O(V + E)  
 
 import java.io.*;
 import java.util.*;
 
 public class EulerPath {
-
-    static final int nMax = 100005;
 
     static void euler(int nod, ArrayList<Pair<Integer, Integer>>[] G, ArrayList<Integer> e, BitSet viz) {
         while (!G[nod].isEmpty()) {
@@ -29,8 +27,8 @@ public class EulerPath {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
-        ArrayList<Pair<Integer, Integer>>[] G = new ArrayList[nMax];
-        for (int i = 0; i < nMax; i++) {
+        ArrayList<Pair<Integer, Integer>>[] G = new ArrayList[n + 1];
+        for (int i = 1; i <= n; i++) {
             G[i] = new ArrayList<>();
         }
 
@@ -43,8 +41,8 @@ public class EulerPath {
         }
 
         ArrayList<Integer> e = new ArrayList<>();
-        BitSet viz = new BitSet(5 * nMax);
-        euler(0, G, e, viz);
+        BitSet viz = new BitSet(m);
+        euler(1, G, e, viz);
 
         for (int i = e.size() - 1; i > 0; i--) {
             fout.write(e.get(i) + " ");
