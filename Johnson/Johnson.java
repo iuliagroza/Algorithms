@@ -1,7 +1,7 @@
 // This code is contributed by Riyazul555
 
-// Time Complexity  = O(V * E + V * (V + E) * log(V))  where where V is the number of vertices and E is the number of edges
-// Space Complexity = O(V + E)                         where where V is the number of vertices and E is the number of edges
+// Time Complexity  = O(V²*logv + VE) 
+// Space Complexity = O(V²)                        
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,6 +15,7 @@ import java.util.Queue;
 
 public class Main {
     static final int nMax = 1005;
+    static final int INF = 1_000_000_000;
 
     static class Pair {
         int first;
@@ -30,7 +31,7 @@ public class Main {
         Queue<Integer> Q = new PriorityQueue<>();
         boolean[] in = new boolean[nMax];
         int[] nr = new int[nMax];
-        Arrays.fill(h, 1_000_000_000);
+        Arrays.fill(h, INF);
         h[nod] = 0;
         Q.add(nod);
         in[nod] = true;
@@ -58,7 +59,7 @@ public class Main {
         PriorityQueue<Pair> Q = new PriorityQueue<>((a, b) -> Integer.compare(b.second, a.second));
         boolean[] in = new boolean[nMax];
         Q.add(new Pair(0, nod));
-        Arrays.fill(d, -1_000_000_000);
+        Arrays.fill(d, -INF);
         d[nod] = 0;
         while (!Q.isEmpty()) {
             if (!in[Q.peek().first]) {
@@ -115,7 +116,7 @@ public class Main {
                 for (int j = 0; j < n; j++) {
                     if (i == j) {
                         fout.write("0 ");
-                    } else if (d[j] == -1_000_000_000) {
+                    } else if (d[j] == -INF) {
                         fout.write("INF ");
                     } else {
                         fout.write(-d[j] - h[i] + h[j] + " ");
