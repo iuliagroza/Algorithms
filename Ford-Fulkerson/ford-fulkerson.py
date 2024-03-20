@@ -1,9 +1,10 @@
 # This code was contributed by Riyazul555
 
-# Time Complexity = O(M * (V + E))  where V is the total number of nodes in the graph, E is the total number of edges in the graph, M m is the number of edges with nonzero capacities
-# Space Complexity = O(V^2)         where V is the total number of nodes in the graph, E is the total number of edges in the graph, M m is the number of edges with nonzero capacities
+# Time Complexity = O(M * (V + E))  
+# Space Complexity = O(V^2)
 
 from collections import deque
+import sys
 
 def bfs(G, n, dad, C):
     Q = deque()
@@ -51,5 +52,4 @@ def main(input_file, output_file):
         fout.write(str(flow))
 
 if __name__ == "__main__":
-    import sys
     main(sys.argv[1], sys.argv[2])
