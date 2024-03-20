@@ -1,19 +1,17 @@
 # This code is contributed by Riyazul555
 
-# Time Complexity  = O(V * E + V * (V + E) * log(V))  where where V is the number of vertices and E is the number of edges
-# Space Complexity = O(V + E)                         where where V is the number of vertices and E is the number of edges
+# Time Complexity  = O(V²*logV + VE) 
+# Space Complexity = O(V²)                        
 
 from queue import Queue
 from heapq import heappush, heappop
 
-nMax = 1005
-
 def bf(nod, n, h, G):
     Q = Queue()
-    in_queue = [False] * nMax
-    nr = [0] * nMax
+    in_queue = [False] * n
+    nr = [0] * n
     for i in range(n):
-        h[i] = 10**9
+        h[i] = float('inf')
     h[nod] = 0
     Q.put(nod)
     in_queue[nod] = True
@@ -33,11 +31,11 @@ def bf(nod, n, h, G):
 
 def dijkstra(nod, n, d, G):
     Q = []
-    in_queue = [False] * nMax
+    in_queue = [False] * n
     heappush(Q, (0, nod))
     for i in range(n):
         if i != nod:
-            d[i] = -10**9
+            d[i] = float('-inf')
             heappush(Q, (d[i], i))
     d[nod] = 0
     while Q:
@@ -54,14 +52,14 @@ def dijkstra(nod, n, d, G):
 def main():
     with open('input.txt') as fin, open('output.txt', 'w') as fout:
         n, m = map(int, fin.readline().split())
-        G = [[] for _ in range(nMax)]
+        G = [[] for _ in range(n)]
         for _ in range(m):
             x, y, w = map(int, fin.readline().split())
             G[x].append((y, w))
         s = n
         for i in range(n):
             G[s].append((i, 0))
-        h = [0] * nMax
+        h = [0] * n
         ok = False
         if bf(s, n, h, G):
             fout.write('-1')
@@ -70,13 +68,13 @@ def main():
                 for j in range(len(G[i])):
                     G[i][j] = (G[i][j][0], G[i][j][1] + h[i] - h[G[i][j][0]])
                     fout.write(f'{i} {G[i][j][0]} {G[i][j][1]}\n')
-            d = [0] * nMax
+            d = [0] * n
             for i in range(n):
                 dijkstra(i, n, d, G)
                 for j in range(n):
                     if i == j:
                         fout.write('0 ')
-                    elif d[j] == -10**9:
+                    elif d[j] == float('-inf'):
                         fout.write('INF ')
                     else:
                         fout.write(f'{-d[j] - h[i] + h[j]} ')
@@ -84,4 +82,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
