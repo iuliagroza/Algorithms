@@ -1,14 +1,12 @@
-//This code was contributed by Riyazul555
+// This code was contributed by Riyazul555
 
-//Time Complexity = O(M * (V + E))  
-//Space Complexity = O(V^2)         
+// Time Complexity = O(M * (V + E))
+// Space Complexity = O(V^2)
 
 import java.io.*;
 import java.util.*;
 
 public class MaxFlow {
-
-    static final int nMax = 1005;
 
     public static int bfs(ArrayList<Integer>[] G, int n, int[] dad, int[][] C) {
         Queue<Integer> Q = new LinkedList<>();
@@ -33,12 +31,13 @@ public class MaxFlow {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
-        ArrayList<Integer>[] G = new ArrayList[nMax];
-        for (int i = 0; i < nMax; i++) {
+        ArrayList<Integer>[] G = new ArrayList[n + 1];
+        for (int i = 1; i <= n; i++) {
             G[i] = new ArrayList<>();
         }
 
-        int[][] C = new int[nMax][nMax];
+        int[][] C = new int[n + 1][n + 1];
+
         for (int i = 1; i <= m; i++) {
             st = new StringTokenizer(fin.readLine());
             int x = Integer.parseInt(st.nextToken()) + 1;
@@ -50,7 +49,7 @@ public class MaxFlow {
         }
 
         int flow = 0;
-        int[] dad = new int[nMax];
+        int[] dad = new int[n + 1];
         while (bfs(G, n, dad, C) != 0) {
             for (int i : G[n]) {
                 int Min = C[i][n];
