@@ -1,7 +1,7 @@
 //This code was contributed by Riyazul555
 
-//Time Complexity = O(M * (V + E))  where V is the total number of nodes in the graph, E is the total number of edges in the graph, M m is the number of edges with nonzero capacities
-//Space Complexity = O(V^2)         where V is the total number of nodes in the graph, E is the total number of edges in the graph, M m is the number of edges with nonzero capacities
+//Time Complexity = O(M * (V + E))  
+//Space Complexity = O(V^2)         
 
 import java.io.*;
 import java.util.*;
