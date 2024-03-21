@@ -1,7 +1,7 @@
 # This code is contributed by Riyazul555
 
-# Time Complexity  = O(V²*logV + VE) 
-# Space Complexity = O(V²)                        
+# Time Complexity  = O(V²*logV + VE) where where V is the number of vertices and E is the number of edges
+# Space Complexity = O(V²)           where where V is the number of vertices and E is the number of edges           
 
 from queue import Queue
 from heapq import heappush, heappop
