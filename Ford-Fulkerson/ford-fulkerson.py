@@ -1,7 +1,7 @@
 # This code was contributed by Riyazul555
 
-# Time Complexity = O(M * (V + E))  
-# Space Complexity = O(V^2)
+# Time Complexity = O(f * (V + E))  where V is the total number of nodes in the graph, E is the total number of edges in the graph, f is the maximum flow
+# Space Complexity = O(V^2)         where V is the total number of nodes in the graph, E is the total number of edges in the graph, f is the maximum flow
 
 from collections import deque
 import sys
