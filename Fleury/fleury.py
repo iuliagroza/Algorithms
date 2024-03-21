@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     with open(input_file, 'r') as fin, open(output_file, 'w') as fout:
         n, m = map(int, fin.readline().split())
-        G = [[] for _ in range(n + 1)]  
+        G = [[] for edge in range(n + 1)] 
         for _ in range(m):
             x, y = map(int, fin.readline().split())
             G[x].append((y, _ + 1))
