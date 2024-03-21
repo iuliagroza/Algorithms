@@ -1,7 +1,7 @@
 # This code is contributed by Riyazul555
 
-# Time Complexity  =  O(V + E)  
-# Space Complexity =  O(V + E)  
+# Time Complexity  =  O(V + E)  where V is the number of vertices and E is the number of edges.
+# Space Complexity =  O(V + E)  where V is the number of vertices and E is the number of edges.
 
 import sys
 
