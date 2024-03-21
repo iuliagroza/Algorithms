@@ -1,7 +1,7 @@
 // This code is contributed by Riyazul555
 
-// Time Complexity  = O(V²*logv + VE) 
-// Space Complexity = O(V²)                        
+// Time Complexity  = O(V²*logv + VE)    where where V is the number of vertices and E is the number of edges
+// Space Complexity = O(V²)              where where V is the number of vertices and E is the number of edges
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
