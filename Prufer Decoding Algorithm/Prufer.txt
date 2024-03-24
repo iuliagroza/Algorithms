@@ -1,0 +1,55 @@
+("This code is contributed by Riyazul555")
+
+Time Complexity = O(N)  where N is number of elements in input array 
+Space Complexity = O(N) where N is number of elements in input array
+
+
+function constructParentArray(inputFileName, outputFileName):
+    # Open input and output files
+    fin = open(inputFileName, "r")
+    fout = open(outputFileName, "w")
+    
+    # Define constants
+    nMax = 100005
+    
+    # Initialize arrays
+    n, cod[nMax], deg[nMax] = 0
+    
+    # Read input
+    n = fin.readInteger()
+    for i from 0 to n-1:
+        cod[i] = fin.readInteger()
+        deg[cod[i]]++
+    
+    # Initialize pointers
+    ptr = 0
+    while deg[ptr] != 0:
+        ptr++
+    leaf = ptr
+    
+    # Initialize parent array
+    p[nMax]
+    for i from 0 to n-1:
+        p[i] = -1
+    
+    # Construct the parent array
+    for i from 0 to n-1:
+        p[leaf] = cod[i]
+        
+        # Update degree and find the next leaf node
+        if deg[cod[i]] == 0 and cod[i] < ptr:
+            leaf = cod[i]
+        else:
+            ptr++
+            while deg[ptr] != 0:
+                ptr++
+            leaf = ptr
+    
+    # Output the result
+    fout.write(n + 1 + "\n")
+    for i from 0 to n:
+        fout.write(p[i] + " ")
+    
+    # Close files
+    fin.close()
+    fout.close()
