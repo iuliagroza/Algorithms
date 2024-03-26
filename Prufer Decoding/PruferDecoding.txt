@@ -1,0 +1,79 @@
+("This code is contributed by Riyazul555")
+
+ Time Complexity = O(N)  where N is number of elements in input array 
+ Space Complexity = O(N) where N is number of elements in input array
+
+// Include necessary libraries
+#include_library <fstream>
+#include_library <vector>
+
+// Define constant for maximum number of elements
+define nMax 100005
+
+// Main function
+function main(argc, argv[])
+{
+    // Open input file
+    ifstream fin(argv[1]);
+    // Open output file
+    ofstream fout(argv[2]);
+
+    // Declare variables
+    int n, cod[nMax], deg[nMax]={0};
+    
+    // Read number of elements from input
+    fin >> n;
+
+    // Read elements and calculate degrees
+    for (i = 0; i < n; i++)
+    {
+        fin >> cod[i];
+        deg[cod[i]]++;
+    }
+
+    // Initialize pointer and leaf
+    ptr = 0;
+    while (deg[ptr] != 0)
+    {
+        ptr++;
+    }
+    leaf = ptr;
+    
+    // Declare array to store parents
+    int p[nMax];
+    for (i = 0; i < n; i++)
+    {
+        p[i] = -1;
+    }
+
+    // Traverse through elements to assign parents
+    for (i = 0; i < n; i++)
+    {
+        p[leaf] = cod[i];
+        if (--deg[cod[i]] == 0 && cod[i] < ptr)
+        {
+            leaf = cod[i];
+        }
+        else
+        {
+            ptr++;
+            while (deg[ptr] != 0)
+            {
+                ptr++;
+            }
+            leaf = ptr;
+        }
+    }
+
+    // Write result to output file
+    fout << n+1 << "\n";
+    for (i = 0; i < n+1; i++)
+    {
+        fout << p[i] << " ";
+    }
+    
+    // Close input and output files
+    fin.close();
+    fout.close();
+    return 0;
+}
