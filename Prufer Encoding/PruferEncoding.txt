@@ -1,0 +1,80 @@
+("This code is contributed by Riyazul555")
+
+// Time Complexity  =  O(N)  N is number of nodes in the tree
+// Space Complexity = O(N)  N is number of nodes in the tree
+
+// Include necessary libraries
+#include_library <fstream>
+#include_library <vector>
+
+// Define constant for maximum number of elements
+define nMax 100005
+
+// Main function
+function main(argc, argv[])
+{
+    // Open input file
+    ifstream fin(argv[1]);
+    // Open output file
+    ofstream fout(argv[2]);
+
+    // Declare variables
+    int n, daddy[nMax], deg[nMax]={0};
+    
+    // Read number of elements from input
+    fin >> n;
+
+    // Read elements and calculate degrees
+    for (i = 0; i < n; i++)
+    {
+        fin >> daddy[i];
+        deg[i]++;
+        deg[daddy[i]]++;
+    }
+
+    // Find starting leaf
+    int ptr = -1;
+    for (i = 0; i < n; i++)
+    {
+        if (deg[i] == 1 && ptr == -1)
+        {
+            ptr = i;
+        }
+    }
+
+    // Initialize solution vector
+    vector<int> sol;
+    int leaf = ptr;
+
+    // Traverse through the tree to find the solution
+    for (i = 0; i < n-1; i++)
+    {
+        int nxt = daddy[leaf];
+        sol.push_back(nxt);
+        if (--deg[nxt] == 1 && nxt < ptr)
+        {
+            leaf = nxt;
+        }
+        else
+        {
+            ptr++;
+            while (deg[ptr] != 1)
+            {
+                ptr++;
+            }
+            leaf = ptr;
+        }
+    }
+
+    // Write result to output file
+    fout << n - 1 << "\n";
+    for (auto i : sol)
+    {
+        fout << i << " ";
+    }
+    
+    // Close input and output files
+    fin.close();
+    fout.close();
+    return 0;
+}
