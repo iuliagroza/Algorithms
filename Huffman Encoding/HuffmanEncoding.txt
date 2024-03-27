@@ -1,0 +1,110 @@
+("This code is contributed by Riyazul555")
+
+// Time complexity  = O(N log N)   N is number of unique characters
+// Space complexity = O(N)         N is number of unique characters
+
+// Include necessary libraries
+#include_library <fstream>
+#include_library <queue>
+#include_library <algorithm>
+#include_library <map>
+
+// Define constant for maximum number of elements
+define nMax 20005
+
+// Function to perform Depth-First Search (DFS)
+function dfs(nod, val, G, cod) {
+    if (G[nod][0] == -1) {
+        cod[nod] = val;
+        return;
+    }
+    dfs(G[nod][0], val+"0", G, cod);
+    dfs(G[nod][1], val+"1", G, cod);
+}
+
+// Main function
+function main(argc, argv[]) {
+    // Open input file
+    ifstream fin(argv[1]);
+    // Open output file
+    ofstream fout(argv[2]);
+
+    // Declare variables
+    map<char, int> ap;
+    string s;
+    vector<char> v;
+    int val[nMax] = {0};
+
+    // Read input string and populate map and vector
+    getline(fin, s);
+    for (int i = 0; i < s.size(); i++) {
+        ap[s[i]]++;
+        if (find(v.begin(), v.end(), s[i]) == v.end()) {
+            v.push_back(s[i]);
+        }
+    }
+
+    // Sort vector
+    sort(v.begin(), v.end());
+
+    // Initialize arrays and output number of distinct characters
+    int fr[nMax] = {0};
+    int n = v.size();
+    fout << v.size() << "\n";
+    for (int i = 0; i < n; i++) {
+        fout << v[i] << " " << ap[v[i]] << "\n";
+        fr[i] = ap[v[i]];
+        val[i] = i;
+    }
+
+    // Initialize priority queue
+    auto compare = [&fr, &val](int a, int b) { return ((fr[a] > fr[b])  || (fr[a]==fr[b] && val[a]>val[b])); };
+    priority_queue<int, vector<int>, decltype(compare)> Q(compare);
+    for (int i = 0; i < n; i++) {
+        Q.push(i);
+    }
+
+    // Initialize Huffman tree
+    int G[nMax][2];
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < nMax; j++) {
+            G[j][i] = -1;
+        }
+    }
+    int z = n-1;
+
+    // Build Huffman tree
+    while (Q.size() > 1) {
+        int x = Q.top();
+        Q.pop();
+        int y = Q.top();
+        Q.pop();
+        z++;
+        fr[z] = fr[x] + fr[y];
+        val[z] = min(val[x], val[y]);
+        Q.push(z);
+        G[z][0] = x;
+        G[z][1] = y;
+    }
+
+    // Generate codewords using DFS
+    string cod[nMax] = {""};
+    dfs(z, "", G, cod);
+
+    // Map characters to their Huffman codes
+    map<char, string> codif;
+    for (int i = 0; i < n; i++) {
+        codif[v[i]] = cod[i];
+    }
+
+    // Output encoded string
+    for (int i = 0; i < s.size(); i++) {
+        fout << codif[s[i]];
+    }
+
+    // Close input and output files
+    fin.close();
+    fout.close();
+
+    return 0;
+}
