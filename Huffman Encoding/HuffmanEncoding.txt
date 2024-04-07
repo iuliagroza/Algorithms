@@ -4,77 +4,90 @@
 // Space complexity = O(N)         N is number of unique characters
 
 // Include necessary libraries
-#include_library <fstream>
-#include_library <queue>
-#include_library <algorithm>
-#include_library <map>
+include <fstream>
+include <queue>
+include <algorithm>
+#include <map>
 
-// Define constant for maximum number of elements
-define nMax 20005
+// Define maximum number of nodes
+#define nMax 20005
 
-// Function to perform Depth-First Search (DFS)
-function dfs(nod, val, G, cod) {
+// Namespace declaration
+using namespace std;
+
+// Depth-first search function to generate codewords
+void dfs(int nod, string val, int G[nMax][2], string cod[nMax]) {
+    // Base case: If leaf node, assign codeword and return
     if (G[nod][0] == -1) {
         cod[nod] = val;
         return;
     }
-    dfs(G[nod][0], val+"0", G, cod);
-    dfs(G[nod][1], val+"1", G, cod);
+    
+    // Recursive calls for left and right children
+    dfs(G[nod][0], val + "0", G, cod);
+    dfs(G[nod][1], val + "1", G, cod);
 }
 
 // Main function
-function main(argc, argv[]) {
-    // Open input file
+int main(int argc, char* argv[]) {
+    // Open input and output files
     ifstream fin(argv[1]);
-    // Open output file
     ofstream fout(argv[2]);
-
-    // Declare variables
+    
+    // Declare and initialize variables
     map<char, int> ap;
     string s;
     vector<char> v;
     int val[nMax] = {0};
-
-    // Read input string and populate map and vector
+    
+    // Read input string
     getline(fin, s);
-    for (int i = 0; i < s.size(); i++) {
+    
+    // Count frequency of characters and store unique characters in vector v
+    for(int i = 0; i < s.size(); i++) {
         ap[s[i]]++;
-        if (find(v.begin(), v.end(), s[i]) == v.end()) {
+        if(find(v.begin(), v.end(), s[i]) == v.end())
             v.push_back(s[i]);
-        }
     }
-
-    // Sort vector
+    
+    // Sort vector v
     sort(v.begin(), v.end());
-
-    // Initialize arrays and output number of distinct characters
+    
+    // Declare and initialize frequency array fr
     int fr[nMax] = {0};
     int n = v.size();
+    
+    // Output the number of unique characters
     fout << v.size() << "\n";
-    for (int i = 0; i < n; i++) {
+    
+    // Output characters and their frequencies, and update arrays fr and val
+    for(int i = 0; i < n; i++) {
         fout << v[i] << " " << ap[v[i]] << "\n";
         fr[i] = ap[v[i]];
         val[i] = i;
     }
-
-    // Initialize priority queue
-    auto compare = [&fr, &val](int a, int b) { return ((fr[a] > fr[b])  || (fr[a]==fr[b] && val[a]>val[b])); };
+    
+    // Define custom comparator for priority queue
+    auto compare = [&fr, &val](int a, int b) { 
+        return ((fr[a] > fr[b]) || (fr[a] == fr[b] && val[a] > val[b]));
+    };
+    
+    // Priority queue declaration with custom comparator
     priority_queue<int, vector<int>, decltype(compare)> Q(compare);
-    for (int i = 0; i < n; i++) {
+    
+    // Push indices into priority queue
+    for(int i = 0; i < n; i++)
         Q.push(i);
-    }
-
-    // Initialize Huffman tree
+    
+    // Initialize adjacency matrix G
     int G[nMax][2];
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < nMax; j++) {
+    for(int i = 0; i < 2; i++)
+        for(int j = 0; j < nMax; j++)
             G[j][i] = -1;
-        }
-    }
-    int z = n-1;
-
-    // Build Huffman tree
-    while (Q.size() > 1) {
+    
+    // Huffman coding algorithm
+    int z = n - 1;
+    while(Q.size() > 1) {
         int x = Q.top();
         Q.pop();
         int y = Q.top();
@@ -86,25 +99,22 @@ function main(argc, argv[]) {
         G[z][0] = x;
         G[z][1] = y;
     }
-
+    
     // Generate codewords using DFS
     string cod[nMax] = {""};
     dfs(z, "", G, cod);
-
-    // Map characters to their Huffman codes
+    
+    // Create map to store character-to-codeword mapping
     map<char, string> codif;
-    for (int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++)
         codif[v[i]] = cod[i];
-    }
-
+    
     // Output encoded string
-    for (int i = 0; i < s.size(); i++) {
+    for(int i = 0; i < s.size(); i++)
         fout << codif[s[i]];
-    }
-
-    // Close input and output files
+    
+    // Close input and output files and return
     fin.close();
     fout.close();
-
     return 0;
 }
