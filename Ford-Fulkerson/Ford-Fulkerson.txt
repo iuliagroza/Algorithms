@@ -1,0 +1,94 @@
+// ("This code was contributed by Riyazul555")
+
+// Time Complexity = O(f * (V + E))   where V is the total number of nodes in the graph, E is the total number of edges in the graph, f is the Maximum flow
+// Space Complexity = O(V^2)          where V is the total number of nodes in the graph, E is the total number of edges in the graph, f is the Maximum flow
+
+// Include necessary libraries
+include <fstream>
+include <vector>
+include <queue>
+
+// Define maximum number of vertices
+#define nMax 1005
+
+// Global variable to store capacities
+int C[nMax][nMax];
+
+// Breadth-first search function to find augmenting path
+int bfs(vector<int> G[nMax], int n, int dad[nMax]) {
+    // Initialize queue and mark source as visited
+    queue<int> Q;
+    Q.push(1);
+    
+    // Loop until queue is empty
+    while (!Q.empty()) {
+        int nod = Q.front();
+        Q.pop();
+        
+        // Loop through adjacent vertices
+        for (int i : G[nod]) {
+            // If vertex is not visited and there is capacity in the edge
+            if (!dad[i] && C[nod][i] > 0) {
+                dad[i] = nod; // Update parent
+                Q.push(i); // Add to queue
+            }
+        }
+    }
+    // Return whether there is a path to the sink
+    return dad[n];
+}
+
+// Main function
+int main(int argc, char* argv[]) {
+    // Open input and output files
+    ifstream fin(argv[1]);
+    ofstream fout(argv[2]);
+    
+    // Declare variables
+    int n, m;
+    fin >> n >> m;
+    vector<int> G[nMax];
+    
+    // Read edge capacities and build adjacency list
+    for (int i = 1; i <= m; i++) {
+        int x, y, c;
+        fin >> x >> y >> c;
+        x++;
+        y++;
+        C[x][y] = c;
+        G[x].push_back(y);
+        G[y].push_back(x);
+    }
+    
+    // Initialize flow and parent array
+    int flow = 0, dad[nMax] = {0};
+    
+    // Find augmenting paths and update flow until no more paths exist
+    while (bfs(G, n, dad)) {
+        for (auto i : G[n]) {
+            // Find minimum residual capacity along the path
+            int Min = C[i][n];
+            for (int j = i; j != 1; j = dad[j])
+                Min = min(Min, C[dad[j]][j]);
+            
+            // Update flow and capacities along the path
+            for (int j = i; j != 1; j = dad[j]) {
+                C[dad[j]][j] -= Min;
+                C[j][dad[j]] += Min;
+            }
+            flow += Min;
+            C[i][n] -= Min;
+            C[n][i] += Min;
+        }
+        // Reset parent array for next iteration
+        fill(dad, dad + n + 1, 0);
+    }
+    
+    // Output maximum flow
+    fout << flow;
+    
+    // Close input and output files and return
+    fin.close();
+    fout.close();
+    return 0;
+}
