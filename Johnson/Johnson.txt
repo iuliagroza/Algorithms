@@ -1,0 +1,141 @@
+// ("This code is contributed by Riyazul555")
+
+// Time Complexity  = O(V²*logv + VE)    where where V is the number of vertices and E is the number of edges
+// Space Complexity = O(V²)              where where V is the number of vertices and E is the number of edges
+
+// Include necessary libraries
+include <fstream>
+include <vector>
+#include <queue>
+
+// Define maximum number of vertices
+#define nMax 1005
+
+// Function to perform Bellman-Ford algorithm
+void bf(int nod, int n, int h[], vector<pair<int, int>> G[nMax], bool &ok) {
+    // Initialize queue and arrays
+    queue<int> Q;
+    bool in[nMax] = {false};
+    int nr[nMax] = {0};
+    for (int i = 0; i < n; i++)
+        h[i] = 1e9;
+    
+    // Set source node's distance to 0 and push into queue
+    h[nod] = 0;
+    Q.push(nod);
+    in[nod] = true;
+    
+    // Bellman-Ford algorithm
+    while (!Q.empty()) {
+        nod = Q.front();
+        Q.pop();
+        in[nod] = false;
+        
+        // Relax edges
+        for (auto i : G[nod]) {
+            if (h[nod] + i.second < h[i.first]) {
+                h[i.first] = h[nod] + i.second;
+                nr[i.first]++;
+                
+                // If a vertex is relaxed more than n times, there's a negative cycle
+                if (nr[i.first] > n) {
+                    ok = true;
+                    return;
+                }
+                if (!in[i.first]) {
+                    in[i.first] = true;
+                    Q.push(i.first);
+                }
+            }
+        }
+    }
+}
+
+// Function to perform Dijkstra's algorithm
+void dijkstra(int nod, int n, int d[], vector<pair<int, int>> G[nMax]) {
+    // Priority queue to store vertices with their distances
+    priority_queue<pair<int, int>> Q;
+    bool in[nMax] = {false};
+    
+    // Initialize distances and push source node into the queue
+    Q.push({0, nod});
+    for (int i = 0; i < n; i++) {
+        if (i != nod) {
+            d[i] = -1e9;
+            Q.push({d[i], i});
+        }
+    }
+    d[nod] = 0;
+    
+    // Dijkstra's algorithm
+    while (!Q.empty()) {
+        if (!in[Q.top().second]) {
+            int x = Q.top().second;
+            for (auto i : G[x]) {
+                if (d[x] - i.second > d[i.first]) {
+                    Q.push({d[x] - i.second, i.first});
+                    d[i.first] = d[x] - i.second;
+                }
+            }
+            in[x] = true;
+        } else {
+            Q.pop();
+        }
+    }
+}
+
+// Main function
+int main(int argc, char * argv[]) {
+    // Open input and output files
+    ifstream fin(argv[1]);
+    ofstream fout(argv[2]);
+    
+    // Declare variables
+    int n, m;
+    vector<pair<int, int>> G[nMax];
+    
+    // Read input and construct graph
+    fin >> n >> m;
+    while (m--) {
+        int x, y, w;
+        fin >> x >> y >> w;
+        G[x].push_back({y, w});
+    }
+    
+    // Add a super-source node and perform Bellman-Ford to detect negative cycles
+    int s = n;
+    for (int i = 0; i < n; i++)
+        G[s].push_back({i, 0});
+    int h[nMax] = {0};
+    bool ok = false;
+    bf(s, n, h, G, ok);
+    
+    // If there is a negative cycle, output -1, otherwise, adjust weights and perform Dijkstra's
+    if (ok)
+        fout << -1;
+    else {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < G[i].size(); j++) {
+                G[i][j].second += h[i] - h[G[i][j].first];
+                fout << i << " " << G[i][j].first << " " << G[i][j].second << "\n";
+            }
+            int d[nMax] = {0};
+            for (int j = 0; j < n; j++) {
+                dijkstra(i, n, d, G);
+                for (int k = 0; k < n; k++) {
+                    if (i == k)
+                        fout << "0 ";
+                    else if (d[k] == -1e9)
+                        fout << "INF ";
+                    else
+                        fout << -d[k] - h[i] + h[k] << " ";
+                }
+                fout << "\n";
+            }
+        }
+    }
+    // Close input and output files and return
+    fin.close();
+    fout.close();
+    return 0;
+}
